@@ -14,7 +14,8 @@ with open('../data/elite_users_list.json') as users:
         user_reviews = []
         user_tips = []
 
-        
+	if (i > 2):
+		break        
         
         with open('../dataset/review.json') as reviews:
             j = 0
