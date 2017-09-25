@@ -6,16 +6,23 @@ data = {}
 
 with open('../data/elite_users_list.json') as users:
     
-    real_users = [u[:-1] for u in users] # remove the unseen newline character
+    real_users = json.load(users)
+    
     i = 0
     
     for u in real_users:
+
+        if (u == '[' or u == ']'):
+            continue
+
         user_data = {}
         user_reviews = []
         user_tips = []
 
-	if (i > 2):
-		break        
+        # print (u)
+
+        if i > 0:
+            break     
         
         with open('../dataset/review.json') as reviews:
             j = 0
@@ -26,6 +33,7 @@ with open('../data/elite_users_list.json') as users:
                 
                 line = json.loads(r)
                 user_id = line['user_id']
+                # print (user_id)
                 if (u == user_id):
                     user_reviews.append(line['review_id'])
 
@@ -53,4 +61,4 @@ with open('../data/elite_users_list.json') as users:
 
 
 with open('../data/elite_user_map.json', 'w') as outfile:
-    json.dumps(data);    
+    json.dump(data, outfile);
