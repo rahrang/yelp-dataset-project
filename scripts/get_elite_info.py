@@ -1,4 +1,4 @@
-# this code was used to filter user.json for elite yelp users' info (in get_elite_info.json)
+# filter user.json for elite yelp users' info (in get_elite_info.json)
 
 import json
 
@@ -14,7 +14,7 @@ def formatElite(eliteUser):
     tempDict['user_id'] = eliteUser.get('user_id')
     tempDict['review_count'] = eliteUser.get('review_count')
     tempDict['yelping_since'] = eliteUser.get('yelping_since')
-    tempDict['numFriends'] = len(eliteUser.get('friends'))
+    tempDict['num_friends'] = len(eliteUser.get('friends'))
     tempDict['useful'] = eliteUser.get('useful')
     tempDict['funny'] = eliteUser.get('funny')
     tempDict['cool'] = eliteUser.get('cool')
@@ -39,7 +39,7 @@ def formatElite(eliteUser):
 
     return tempDict
 
-
+# get the elite users with their information
 data = {}
 with open('./dataset/user.json') as f:
     for line in f:
@@ -50,5 +50,5 @@ with open('./dataset/user.json') as f:
             elite_user = formatElite(real_line)
             data[user_id] = elite_user
 
-with open('elite_users_data.json', 'w') as outfile:
+with open('../data/elite_users_data.json', 'w') as outfile:
     json.dump(data, outfile)
