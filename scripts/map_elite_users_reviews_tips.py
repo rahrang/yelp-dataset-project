@@ -1,28 +1,28 @@
 # map elite users to their tips and reviews
 
+import json
+
 data = {}
-
-
-# with open('../dataset/review.json') as reviews:
-#     with open('../data/elite_users_list.json') as users:
-#         real_users = [u[:-1] for u in users] # remove the unseen newline character
 
 with open('../data/elite_users_list.json') as users:
     
     real_users = [u[:-1] for u in users] # remove the unseen newline character
+    i = 0
     
     for u in real_users:
         user_data = {}
         user_reviews = []
         user_tips = []
 
-        i = 0
+        
         
         with open('../dataset/review.json') as reviews:
             j = 0
-            print("user :" + i + " || review :" + j)
 
             for r in reviews:
+
+                print("user: " + str(i) + " || review: " + str(j))
+                
                 line = json.loads(r)
                 user_id = line['user_id']
                 if (u == user_id):
@@ -32,9 +32,11 @@ with open('../data/elite_users_list.json') as users:
 
         with open('../dataset/tip.json') as tips:
             k = 0
-            print("user :" + i + " || tip :" + k)
 
             for t in tips:
+                
+                print("user: " + str(i) + " || tip: " + str(k))
+
                 line = json.loads(t)
                 user_id = line['user_id']
                 if (u == user_id):
