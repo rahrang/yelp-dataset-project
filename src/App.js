@@ -1,21 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
+// Local Components & Helpers
+import './App.css';
+import Home from './components/Home.jsx';
+
+// NPM Modules
+import { css, StyleSheet } from 'aphrodite';
+
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className={css(styles.appContainer)}>
+        <Home />
       </div>
     );
   }
 }
 
 export default App;
+
+const styles = StyleSheet.create({
+  appContainer: {
+    backgroundColor: '#F5F5F5',
+    minHeight: '100vh',
+  },
+})
