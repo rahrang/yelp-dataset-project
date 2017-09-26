@@ -1,4 +1,4 @@
-# filter review.json for the elite reviews and elite users with reviews
+# filter review.json for the elite reviews
 
 import json
 
@@ -11,13 +11,10 @@ with open('../dataset/review.json') as data:
         for d in data: # iterate through each of the 4.7M+ reviews
             line = json.loads(d)
             userID = line['user_id']
-            if (userID in real_users): # iterate through each of the 56K + elite users (real_users)
+            if (userID in real_users): # iterate through each of the 56K+ elite users (real_users)
                 if (userID not in elite_users):
                     elite_users.append(userID)
                 elite_reviews.append(line['review_id'])
-
-with open('../data/elite_users_with_reviews.json', 'w') as outfile:
-    json.dump(elite_users, outfile)
 
 with open('../data/elite_reviews.json', 'w') as outfile2:
     json.dump(elite_reviews, outfile2)

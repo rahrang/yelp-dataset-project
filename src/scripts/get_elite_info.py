@@ -3,8 +3,8 @@
 import json
 
 """
-    this function removes unecessary information, such as:
-    - the elite user's name,
+    this function
+    - removes the elite user's name,
     - converts the list of friends into the number of friends,
     - converts compliments into a more usable dictionary
 """
@@ -50,5 +50,5 @@ with open('./dataset/user.json') as f:
             elite_user = formatElite(real_line)
             data[user_id] = elite_user
 
-with open('../data/elite_users_data.json', 'w') as outfile:
+with open('../data/elite_users_info.json', 'w') as outfile:
     json.dump(data, outfile)
