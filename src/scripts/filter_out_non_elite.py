@@ -1,4 +1,4 @@
-# filter user.json for elite yelp users (in elite_users.json)
+# filter user.json for non-elite yelp users
 
 import json
 

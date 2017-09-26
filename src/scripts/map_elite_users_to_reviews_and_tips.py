@@ -7,10 +7,11 @@ data = {}
 with open('../data/elite_reviews_info.json') as elite_reviews_info:
     reviews_info = json.load(elite_reviews_info)
 
-i = 0
+i = 0 # just to know where we're at in the process
+
 for key, value in reviews_info.items():
-    print('review: ' + str(i))
-    user_id = value['user_id']
+    print('review: ' + str(i)) # just to know where we're at in the process
+    user_id = value['user_id'] # get the user's id
 
     try:
         data[user_id]['review_ids'].append(key)
@@ -26,7 +27,6 @@ with open('../dataset/tip.json') as tips:
     
     j = 0
     for line in tips:
-
         print('tip: ' + str(j))
 
         t = json.loads(line)
@@ -34,10 +34,12 @@ with open('../dataset/tip.json') as tips:
 
         try:
             data[user_id]['tips'].append(t)
+        
         except KeyError:
             
             try:
                 testDict = data[user_id]['review_ids']
+            
             except KeyError:
                 continue
 

@@ -1,13 +1,18 @@
-# used to ensure a dictionary has been formatted correctly
+# used to ensure a dictionary (filename) has been formatted correctly
 
 import json
 
-with open('../data/map_users_to_reviews_and_tips.json') as data:
-    d = json.load(data)
-    # print (d)
+file_prefix = '../data/'
+file_suffix = '.json'
+filename = 'user_review_tips'
+
+file = file_prefix + filename + file_suffix
+
+with open(file) as f:
+    data = json.load(f)
     x = {}
     i = 0
-    for key, value in d.items():
+    for key, value in data.items():
         x[key] = value
         print(key)
         print('---')
