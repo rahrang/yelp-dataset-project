@@ -8,10 +8,13 @@ with open('../data/elite_users_list.json') as users:
     
     real_users = json.load(users)
     
-    i = 0
+    START = 0
+    END = START + 50
     
-    for u in real_users:
-
+    i = START
+    
+    for i in range(START, END):
+        u = real_users[i]
         if (u == '[' or u == ']'):
             continue
 
@@ -21,7 +24,7 @@ with open('../data/elite_users_list.json') as users:
 
         # print (u)
 
-        if i > 0:
+        if i > END - 1:
             break     
         
         with open('../dataset/review.json') as reviews:
@@ -60,5 +63,14 @@ with open('../data/elite_users_list.json') as users:
         i+=1
 
 
-with open('../data/elite_user_map.json', 'w') as outfile:
+"""
+               COMPLETED
+
+START (inclusive) || END (exclusive)
+-------------------------------------
+
+
+"""
+file_name = '../data/map/' + str(START) + '-' + str(END) + '.json'
+with open(file_name, 'w') as outfile:
     json.dump(data, outfile);

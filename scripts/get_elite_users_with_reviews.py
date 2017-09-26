@@ -8,7 +8,7 @@ elite_reviews = []
 with open('../dataset/review.json') as data:
     with open('../data/elite_users_list.json') as users:
         real_users = [u[:-1] for u in users] # remove the unseen newline character
-        for d in data: # iterate through each of the 10M+ reviews
+        for d in data: # iterate through each of the 4.7M+ reviews
             line = json.loads(d)
             userID = line['user_id']
             if (userID in real_users): # iterate through each of the 56K + elite users (real_users)
