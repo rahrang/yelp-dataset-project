@@ -2,7 +2,7 @@ import React from 'react';
 
 // Local Components & Helpers
 import './App.css';
-import Home from './components/Home.jsx';
+import Routes from './components/routes.jsx';
 
 // NPM Modules
 import { css, StyleSheet } from 'aphrodite';
@@ -11,7 +11,7 @@ class App extends React.Component {
   render() {
     return (
       <div className={css(styles.appContainer)}>
-        <Home />
+        <Routes />
       </div>
     );
   }

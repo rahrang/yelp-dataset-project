@@ -7,13 +7,8 @@
 // React
 import React from 'react';
 
-// Redux
-import { connect } from 'react-redux';
-
 // NPM Modules
-import { Link } from 'react-router-dom';
 import { css, StyleSheet } from 'aphrodite';
-import * as _ from 'lodash';
 import { fadeIn } from 'react-animations';
 
 // Local Components
@@ -21,7 +16,7 @@ import { fadeIn } from 'react-animations';
 // Data Files
 
 
-class Home extends React.Component {
+export default class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,29 +27,18 @@ class Home extends React.Component {
   componentDidMount() {
   }
 
-  addDataToStore = (data) => {
-    this.props.mainActions.storeData(data);
-  }
-
   render() {
 
     return (
-      <div className={css(styles.homeContainer, styles.fadeIn)}>
+      <div className={css(styles.aboutContainer, styles.fadeIn)}>
+        About Container
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    main: state.main
-  };
-};
-
-export default connect(mapStateToProps)(Home);
-
 const styles = StyleSheet.create({
-  homeContainer: {
+  aboutContainer: {
   },
 
   fadeIn: {
