@@ -23,9 +23,10 @@ export default class Navbar extends React.Component {
     return (
       <div id='navbar-container' className={css(styles.fadeIn)}>
         <div className={css(styles.headerContainer)}>
-          <Link to='/' className={css(styles.link)}>
+          <Link to='/' className={css(styles.headerLink)}>
+            <img src='../images/logo_red.png' className={css(styles.logo)} />
             <h1 className={css(styles.header)}>  
-                The Yelp Elite Project
+                The Elite Project
             </h1>
           </Link>
           <div className={css(styles.creditContainer)}>
@@ -68,20 +69,36 @@ const styles = StyleSheet.create({
     padding: '10px 0',
   },
 
-  link: {
+  headerLink: {
+    color: '#F5F5F5',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
     textDecoration: 'none',
+    ':hover': {
+      color: '#333',
+    }
+  },
+
+  logo: {
+    height: '77px',
+    width: '120px',
   },
 
   header: {
-    color: '#333',
     fontFamily: 'Montserrat, sans-serif',
-    fontSize: '2em',
+    fontSize: '1.75em',
+    letterSpacing: '0.025em',
     margin: 0,
-    padding: '0 0 0 20px',
+    padding: '0 0 0 10px',
+    textTransform: 'uppercase',
   },
 
   creditContainer: {
     color: '#F5F5F5',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
     fontFamily: 'Muli, sans-serif',
     padding: '0 20px 0 0',
   },
