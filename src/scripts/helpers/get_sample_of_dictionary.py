@@ -2,11 +2,12 @@
 
 import json
 
-file_prefix = '../data/'
+file_prefix = '../../data/'
+data_folder = 'raw/'
 file_suffix = '.json'
 filename = 'user_review_tips'
 
-file = file_prefix + filename + file_suffix
+file = file_prefix + data_folder + filename + file_suffix
 
 with open(file) as f:
     data = json.load(f)
@@ -23,5 +24,6 @@ with open(file) as f:
 
         i+=1
 
-with open('../data/test.json', 'w') as outfile:
+dst = file_prefix + 'sample/' + filename + file_suffix
+with open(dst, 'w') as outfile:
     json.dump(x, outfile)

@@ -26,7 +26,6 @@ class Home extends React.Component {
     super(props);
     this.state = {
     }
-
   }
 
   render() {
@@ -40,7 +39,11 @@ class Home extends React.Component {
     
     let charts = CHART_TYPES.map((t) => {
       return (
-        <BarChart type={t} data={data[t]} />
+        <BarChart
+          key={`chart_${t}`}
+          type={t}
+          data={data[t]}
+        />
       )
     })
 

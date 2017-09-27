@@ -7,9 +7,6 @@
 // React
 import React from 'react';
 
-// Redux
-import { connect } from 'react-redux';
-
 // NPM Modules
 import { Link } from 'react-router-dom';
 import { css, StyleSheet } from 'aphrodite';
@@ -22,9 +19,6 @@ import { BarChart as Chart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
 
 
 export default class BarChart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
 

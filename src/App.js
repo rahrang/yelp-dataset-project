@@ -1,17 +1,20 @@
 import React from 'react';
 
+// NPM Modules
+import { css, StyleSheet } from 'aphrodite';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 // Local Components & Helpers
 import './App.css';
 import Routes from './components/routes.jsx';
-
-// NPM Modules
-import { css, StyleSheet } from 'aphrodite';
 
 class App extends React.Component {
   render() {
     return (
       <div className={css(styles.appContainer)}>
-        <Routes />
+        <Router style={{height:  '100%'}}>
+          <Route component={Routes} />
+        </Router>
       </div>
     );
   }
