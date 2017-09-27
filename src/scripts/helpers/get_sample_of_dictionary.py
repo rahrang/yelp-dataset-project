@@ -5,7 +5,7 @@ import json
 file_prefix = '../../data/'
 data_folder = 'raw/'
 file_suffix = '.json'
-filename = 'user_review_tips'
+filename = 'elite_users_info'
 
 file = file_prefix + data_folder + filename + file_suffix
 
@@ -15,15 +15,12 @@ with open(file) as f:
     i = 0
     for key, value in data.items():
         x[key] = value
-        print(key)
-        print('---')
-        print(value)
 
-        if (i > 10):
+        if (i > 5):
             break
 
         i+=1
 
-dst = file_prefix + 'sample/' + filename + file_suffix
+dst = file_prefix + 'samples/' + filename + '_sample' + file_suffix
 with open(dst, 'w') as outfile:
     json.dump(x, outfile)
