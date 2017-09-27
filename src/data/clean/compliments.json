@@ -1,0 +1,380 @@
+{
+  "average": [
+    {
+      "type": "cool",
+      "value": 70.53
+    },
+    {
+      "type": "cute",
+      "value": 4.46
+    },
+    {
+      "type": "funny",
+      "value": 70.53
+    },
+    {
+      "type": "hot",
+      "value": 52.13
+    },
+    {
+      "type": "list",
+      "value": 1.96
+    },
+    {
+      "type": "more",
+      "value": 6.5
+    },
+    {
+      "type": "note",
+      "value": 30.34
+    },
+    {
+      "type": "photos",
+      "value": 22.03
+    },
+    {
+      "type": "plain",
+      "value": 68.98
+    },
+    {
+      "type": "writer",
+      "value": 26.46
+    }
+  ],
+  "min": [
+    {
+      "type": "cool",
+      "value": 0
+    },
+    {
+      "type": "cute",
+      "value": 0
+    },
+    {
+      "type": "funny",
+      "value": 0
+    },
+    {
+      "type": "hot",
+      "value": 0
+    },
+    {
+      "type": "list",
+      "value": 0
+    },
+    {
+      "type": "more",
+      "value": 0
+    },
+    {
+      "type": "note",
+      "value": 0
+    },
+    {
+      "type": "photos",
+      "value": 0
+    },
+    {
+      "type": "plain",
+      "value": 0
+    },
+    {
+      "type": "writer",
+      "value": 0
+    }
+  ],
+  "max": [
+    {
+      "type": "cool",
+      "value": 26209
+    },
+    {
+      "type": "cute",
+      "value": 2730
+    },
+    {
+      "type": "funny",
+      "value": 26209
+    },
+    {
+      "type": "hot",
+      "value": 23131
+    },
+    {
+      "type": "list",
+      "value": 2329
+    },
+    {
+      "type": "more",
+      "value": 3772
+    },
+    {
+      "type": "note",
+      "value": 53113
+    },
+    {
+      "type": "photos",
+      "value": 38779
+    },
+    {
+      "type": "plain",
+      "value": 38202
+    },
+    {
+      "type": "writer",
+      "value": 10551
+    }
+  ],
+  "median": [
+    {
+      "type": "cool",
+      "value": 9.59
+    },
+    {
+      "type": "cute",
+      "value": 0.34
+    },
+    {
+      "type": "funny",
+      "value": 9.59
+    },
+    {
+      "type": "hot",
+      "value": 5.46
+    },
+    {
+      "type": "list",
+      "value": 0.17
+    },
+    {
+      "type": "more",
+      "value": 1.84
+    },
+    {
+      "type": "note",
+      "value": 5.74
+    },
+    {
+      "type": "photos",
+      "value": 1.39
+    },
+    {
+      "type": "plain",
+      "value": 8.38
+    },
+    {
+      "type": "writer",
+      "value": 5.29
+    }
+  ],
+  "mode": [
+    {
+      "type": "cool",
+      "value": 0
+    },
+    {
+      "type": "cute",
+      "value": 0
+    },
+    {
+      "type": "funny",
+      "value": 0
+    },
+    {
+      "type": "hot",
+      "value": 0
+    },
+    {
+      "type": "list",
+      "value": 0
+    },
+    {
+      "type": "more",
+      "value": 0
+    },
+    {
+      "type": "note",
+      "value": 1
+    },
+    {
+      "type": "photos",
+      "value": 0
+    },
+    {
+      "type": "plain",
+      "value": 1
+    },
+    {
+      "type": "writer",
+      "value": 0
+    }
+  ],
+  "10": [
+    {
+      "type": "cool",
+      "value": 1.0
+    },
+    {
+      "type": "cute",
+      "value": 0.0
+    },
+    {
+      "type": "funny",
+      "value": 1.0
+    },
+    {
+      "type": "hot",
+      "value": 0.0
+    },
+    {
+      "type": "list",
+      "value": 0.0
+    },
+    {
+      "type": "more",
+      "value": 0.0
+    },
+    {
+      "type": "note",
+      "value": 0.0
+    },
+    {
+      "type": "photos",
+      "value": 0.0
+    },
+    {
+      "type": "plain",
+      "value": 1.0
+    },
+    {
+      "type": "writer",
+      "value": 0.0
+    }
+  ],
+  "25": [
+    {
+      "type": "cool",
+      "value": 3.0
+    },
+    {
+      "type": "cute",
+      "value": 0.0
+    },
+    {
+      "type": "funny",
+      "value": 3.0
+    },
+    {
+      "type": "hot",
+      "value": 1.0
+    },
+    {
+      "type": "list",
+      "value": 0.0
+    },
+    {
+      "type": "more",
+      "value": 0.0
+    },
+    {
+      "type": "note",
+      "value": 2.0
+    },
+    {
+      "type": "photos",
+      "value": 0.0
+    },
+    {
+      "type": "plain",
+      "value": 3.0
+    },
+    {
+      "type": "writer",
+      "value": 2.0
+    }
+  ],
+  "75": [
+    {
+      "type": "cool",
+      "value": 31.0
+    },
+    {
+      "type": "cute",
+      "value": 1.0
+    },
+    {
+      "type": "funny",
+      "value": 31.0
+    },
+    {
+      "type": "hot",
+      "value": 19.0
+    },
+    {
+      "type": "list",
+      "value": 1.0
+    },
+    {
+      "type": "more",
+      "value": 5.0
+    },
+    {
+      "type": "note",
+      "value": 16.0
+    },
+    {
+      "type": "photos",
+      "value": 5.0
+    },
+    {
+      "type": "plain",
+      "value": 26.0
+    },
+    {
+      "type": "writer",
+      "value": 15.0
+    }
+  ],
+  "90": [
+    {
+      "type": "cool",
+      "value": 106.0
+    },
+    {
+      "type": "cute",
+      "value": 6.0
+    },
+    {
+      "type": "funny",
+      "value": 106.0
+    },
+    {
+      "type": "hot",
+      "value": 67.0
+    },
+    {
+      "type": "list",
+      "value": 3.0
+    },
+    {
+      "type": "more",
+      "value": 10.0
+    },
+    {
+      "type": "note",
+      "value": 46.0
+    },
+    {
+      "type": "photos",
+      "value": 20.0
+    },
+    {
+      "type": "plain",
+      "value": 90.0
+    },
+    {
+      "type": "writer",
+      "value": 43.0
+    }
+  ]
+}

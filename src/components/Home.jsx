@@ -17,8 +17,8 @@ import * as _ from 'lodash';
 import { fadeIn } from 'react-animations';
 
 // Local Components
-
-// Data Files
+import BarChart from './BarChart.jsx';
+const CHART_TYPES = ['average', 'median', 'min', 'max', 'mode', '10', '25', '75', '90']
 
 
 class Home extends React.Component {
@@ -29,32 +29,42 @@ class Home extends React.Component {
 
   }
 
-  componentDidMount() {
-  }
-
-  addDataToStore = (data) => {
-    this.props.mainActions.storeData(data);
-  }
-
   render() {
+
+    let { main } = this.props;
+    let data = main.data.compliments;
+
+    if (_.isEmpty(data)) {
+      return null;
+    }
+    
+    let charts = CHART_TYPES.map((t) => {
+      return (
+        <BarChart type={t} data={data[t]} />
+      )
+    })
+
 
     return (
       <div className={css(styles.homeContainer, styles.fadeIn)}>
+        {charts}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return {
-    main: state.main
-  };
+  return { main: state.main };
 };
 
 export default connect(mapStateToProps)(Home);
 
 const styles = StyleSheet.create({
   homeContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   fadeIn: {
