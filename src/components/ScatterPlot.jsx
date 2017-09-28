@@ -12,9 +12,12 @@ import React from 'react';
 import { css, StyleSheet } from 'aphrodite';
 import * as _ from 'lodash';
 
+
 // Local Components
 
 // Data Files
+
+// Constants
 
 
 export default class ScatterPlot extends React.Component {
@@ -29,6 +32,7 @@ export default class ScatterPlot extends React.Component {
 
     return (
       <div className={css(styles.chartContainer)}>
+
       </div>
     );
   }
@@ -47,3 +51,8 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
 })
+
+const chartStyle = {
+  data: {fill: '#D32323', opacity: 0.7, border:'5px solid #EBC074'},
+  labels: {fontSize: 12},
+}

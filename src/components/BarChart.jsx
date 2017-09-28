@@ -11,7 +11,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { css, StyleSheet } from 'aphrodite';
 import * as _ from 'lodash';
-import { BarChart as Chart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
+import { VictoryBar, VictoryChart, VictoryTooltip, VictoryLabel } from 'victory';
 
 // Local Components
 
@@ -31,21 +31,20 @@ export default class BarChart extends React.Component {
     return (
       <div className={css(styles.chartContainer)}>
         <h2 className={css(styles.header)}>{type}</h2>
-        <Chart
-          width={1000}
-          height={300}
-          data={data}
+        <VictoryChart
+          domainPadding='20'
+          height={400}
+          width={1000}        
         >
-          <XAxis dataKey='type' />
-          <YAxis />
-          <Tooltip />
-          <Bar
-            type='monotone'
-            dataKey='value'
-            barSize={90}
-            fill={'#D32323'}
+          <VictoryBar
+            data={data}
+            animate={{duration: 2000}}
+            x='type'
+            y='value'
+            labels={(d) => d.y}
+            style={chartStyle}
           />
-        </Chart>
+        </VictoryChart>
       </div>
     );
   }
@@ -64,3 +63,9 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
 })
+
+const chartStyle = {
+  data: {fill: '#D32323', opacity: 0.7},
+  labels: {fontSize: 12},
+  parent: {border: '1px solid #F5F5F5'}
+}

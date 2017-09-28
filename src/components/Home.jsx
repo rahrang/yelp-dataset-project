@@ -20,7 +20,7 @@ import { fadeIn } from 'react-animations';
 import BarChart from './BarChart.jsx';
 import ScatterPlot from './ScatterPlot.jsx';
 const CHART_TYPES = ['average', 'median', 'min', 'max', 'mode', '10', '25', '75', '90']
-
+const COMPLIMENTS = ['hot', 'more', 'plain', 'cute', 'list', 'note', 'plain', 'cool', 'funny', 'writer', 'photos']
 
 class Home extends React.Component {
   constructor(props) {
@@ -44,6 +44,7 @@ class Home extends React.Component {
           key={`chart_${t}`}
           type={t}
           data={data[t]}
+          categories={COMPLIMENTS.sort()}
         />
       )
     })
