@@ -17,7 +17,8 @@ import Home from './Home.jsx';
 import About from './About.jsx';
 
 // Data Files
-const FILES = ['compliments', 'average_stars', 'cool', 'fans', 'funny', 'num_friends', 'review_count', 'useful']
+// const FILES = ['compliments', 'average_stars', 'cool', 'fans', 'funny', 'num_friends', 'review_count', 'useful']
+const FILES = ['compliments']
 const COMPLIMENTS = ['cool', 'cute', 'funny', 'hot', 'list', 'more', 'note', 'photos', 'plain', 'writer']
 
 class Routes extends React.Component {
@@ -36,7 +37,7 @@ class Routes extends React.Component {
     let compliments = {}
     
     FILES.forEach((f) => {
-      let point = require(`../data/clean/${f}.json`);
+      let point = require(`../data/final/${f}.json`);
       data[f] = point
     });
 

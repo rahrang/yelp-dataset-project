@@ -18,6 +18,7 @@ import { fadeIn } from 'react-animations';
 
 // Local Components
 import BarChart from './BarChart.jsx';
+import ScatterPlot from './ScatterPlot.jsx';
 const CHART_TYPES = ['average', 'median', 'min', 'max', 'mode', '10', '25', '75', '90']
 
 
@@ -49,8 +50,13 @@ class Home extends React.Component {
 
 
     return (
-      <div className={css(styles.homeContainer, styles.fadeIn)}>
-        {charts}
+      <div>
+        <div>
+          <ScatterPlot />
+        </div>
+        <div className={css(styles.homeContainer, styles.fadeIn)}>
+          {charts}
+        </div>
       </div>
     );
   }

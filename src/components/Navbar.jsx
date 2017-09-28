@@ -24,7 +24,7 @@ export default class Navbar extends React.Component {
       <div id='navbar-container' className={css(styles.fadeIn)}>
         <div className={css(styles.headerContainer)}>
           <Link to='/' className={css(styles.headerLink)}>
-            <img src='../images/logo_red.png' className={css(styles.logo)} />
+            <img src='../images/logo_red.png' className={css(styles.logo)} alt={'yelp logo'} />
             <h1 className={css(styles.header)}>  
                 The Elite Project
             </h1>

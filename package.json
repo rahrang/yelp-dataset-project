@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "aphrodite": "^1.2.4",
+    "pondjs": "^0.8.7",
     "prettier": "^1.7.0",
     "react": "^15.6.2",
     "react-animations": "^0.1.0",
@@ -12,6 +13,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
+    "react-timeseries-charts": "^0.12.8",
     "recharts": "^1.0.0-apha.5",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
