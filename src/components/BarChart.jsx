@@ -11,7 +11,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { css, StyleSheet } from 'aphrodite';
 import * as _ from 'lodash';
-import { VictoryBar, VictoryChart, VictoryTooltip, VictoryLabel } from 'victory';
+import { VictoryBar, VictoryChart } from 'victory';
 
 // Local Components
 

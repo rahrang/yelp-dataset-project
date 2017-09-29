@@ -32,28 +32,31 @@ class Home extends React.Component {
   render() {
 
     let { main } = this.props;
-    let data = main.compliments;
+    let data = main.overall.compliments;
 
     if (_.isEmpty(data)) {
       return null;
     }
     
-    let charts = CHART_TYPES.map((t) => {
-      return (
-        <BarChart
-          key={`chart_${t}`}
-          type={t}
-          data={data[t]}
-          categories={COMPLIMENTS.sort()}
-        />
-      )
-    })
+    // let charts = CHART_TYPES.map((t) => {
+    //   return (
+    //     <BarChart
+    //       key={`chart_${t}`}
+    //       type={t}
+    //       data={data[t]}
+    //       categories={COMPLIMENTS.sort()}
+    //     />
+    //   )
+    // })
 
+    let charts = null;
 
     return (
       <div>
         <div>
-          <ScatterPlot />
+          <ScatterPlot
+            data={main.users_scatter.review_count_vs_average_stars}
+          />
         </div>
         <div className={css(styles.homeContainer, styles.fadeIn)}>
           {charts}
