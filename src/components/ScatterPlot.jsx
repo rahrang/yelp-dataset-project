@@ -34,15 +34,17 @@ export default class ScatterPlot extends React.Component {
     return (
       <div className={css(styles.chartContainer)}>
         <VictoryChart
-          height={400}
+          height={250}
           width={500}
+          domain={{x: [0, 2000], y: [0, 5]}}
         >
           <VictoryScatter
-            x='years_elite'
+            x='review_count'
             y='average_stars'
             style={chartStyle}
             size={1}
             data={data}
+            
           />
         </VictoryChart>
       </div>
@@ -65,6 +67,6 @@ const styles = StyleSheet.create({
 })
 
 const chartStyle = {
-  data: {fill: '#D32323', opacity: 0.7, border:'5px solid #EBC074'},
+  data: {fill: '#D32323', opacity: 0.35},
   labels: {fontSize: 12},
 }

@@ -38,18 +38,18 @@ class Home extends React.Component {
       return null;
     }
     
-    // let charts = CHART_TYPES.map((t) => {
-    //   return (
-    //     <BarChart
-    //       key={`chart_${t}`}
-    //       type={t}
-    //       data={data[t]}
-    //       categories={COMPLIMENTS.sort()}
-    //     />
-    //   )
-    // })
+    let charts = CHART_TYPES.map((t) => {
+      return (
+        <BarChart
+          key={`chart_${t}`}
+          type={t}
+          data={data[t]}
+          categories={COMPLIMENTS.sort()}
+        />
+      )
+    })
 
-    let charts = null;
+    // let charts = null;
 
     return (
       <div>
