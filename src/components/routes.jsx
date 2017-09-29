@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
 
 // Redux
 import { connect } from 'react-redux';
@@ -7,6 +6,10 @@ import { bindActionCreators } from 'redux';
 
 // React Router
 import { Switch, Route } from 'react-router-dom';
+
+// NPM Modules
+import { StyleSheet, css } from 'aphrodite';
+import * as _ from 'lodash';
 
 // Actions
 import { MainActions } from '../actions/main-actions';
@@ -17,9 +20,42 @@ import Home from './Home.jsx';
 import About from './About.jsx';
 
 // Data Files
-// const FILES = ['compliments', 'average_stars', 'cool', 'fans', 'funny', 'num_friends', 'review_count', 'useful']
-const FILES = ['compliments']
-const COMPLIMENTS = ['cool', 'cute', 'funny', 'hot', 'list', 'more', 'note', 'photos', 'plain', 'writer']
+const PATH_TO_DATA = '../data/';
+const SUFFIX = '.json';
+
+const DATA_FILES = {
+
+  // 0
+  compliments: [
+      'cool',
+      'cute',
+      'funny',
+      'hot',
+      'list',
+      'more',
+      'note',
+      'photos',
+      'plain',
+      'writer'
+    ],
+
+  // 1
+  years_to_elite: _.range(2005, 2018),
+
+  // 2
+  users_scatter: [
+      'review_count_vs_average_stars',
+      'review_count_vs_num_friends',
+      'years_elite_vs_average_stars',
+      'years_elite_vs_num_friends',
+      'years_elite_vs_review_count'
+    ],
+
+  // 3
+  overall: ['compliments']
+}
+
+const FILE = '../data/clean/cool.json';
 
 class Routes extends React.Component {
 
@@ -29,24 +65,52 @@ class Routes extends React.Component {
 
   storeData = () => {
     let data = this.collectData();
-    this.props.mainActions.storeData(data[0], data[1])
+    this.props.mainActions.storeData(
+      data[0],  // compliments
+      data[1],  // years_to_elite
+      data[2],  // users_scatter
+      data[3]   // overall
+    )
+  }
+
+  collectDataFromFolder = (dataItem) => {
+    let data = {};
+    dataItem[1].forEach((f) => {
+      
+      let file = '';
+      
+      switch (dataItem[0]) {
+        case 'compliments':
+          file = require(`../data/clean/compliment_${f}.json`);
+          break
+        case 'years_to_elite':
+          file = require(`../data/final/years_to_elite/${f}.json`);
+          break
+        case 'users_scatter':
+          file = require(`../data/final/users_scatter/${f}.json`)
+          break
+        case 'overall':
+          file = require(`../data/final/${f}.json`)
+          break
+        default:
+          return
+      }
+
+      data[f] = file;
+    
+    })
+    return data
   }
 
   collectData = () => {
-    let data = {}
-    let compliments = {}
+
+    let data = []
     
-    FILES.forEach((f) => {
-      let point = require(`../data/final/${f}.json`);
-      data[f] = point
-    });
-
-    COMPLIMENTS.forEach((c) => {
-      let point = require(`../data/clean/compliment_${c}.json`);
-      compliments[c] = point
-    });
-
-    return [data, compliments]
+    Object.entries(DATA_FILES).forEach((dataItem) => {
+      data.push(this.collectDataFromFolder(dataItem));
+    })
+    
+    return data
   }
 
   render() {

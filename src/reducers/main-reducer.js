@@ -1,8 +1,10 @@
 import { MainConstants } from '../actions/main-actions';
 
 const defaultState = {
-    data: {},
-    compliments: {}
+    compliments: {},
+    years_to_elite: {},
+    users_scatter: {},
+    overall: {}
 };
 
 const MainReducer = (state = defaultState, action) => {

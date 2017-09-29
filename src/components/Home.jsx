@@ -32,7 +32,7 @@ class Home extends React.Component {
   render() {
 
     let { main } = this.props;
-    let data = main.data.compliments;
+    let data = main.compliments;
 
     if (_.isEmpty(data)) {
       return null;
