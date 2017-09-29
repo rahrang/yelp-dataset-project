@@ -1,11 +1,11 @@
 import json
 
-prefix = '../data/'
-suffix = '.json'
+PREFIX = '../data/'
+SUFFIX = '.json'
 
 src = 'elite_users_info'
 
-filename = prefix + 'raw/' + src + suffix
+filename = PREFIX + 'raw/' + src + SUFFIX
 
 X_AXIS = 'elite'
 Y_AXIS = 'average_stars'
@@ -27,7 +27,7 @@ for key, value in elite_users_info.items():
 
     i+=1
 
-dst = prefix + 'final/' + X_AXIS + '_vs_' + Y_AXIS + suffix
+dst = PREFIX + 'final/' + X_AXIS + '_vs_' + Y_AXIS + SUFFIX
 
 with open(dst, 'w') as outfile:
     json.dump(data, outfile)
