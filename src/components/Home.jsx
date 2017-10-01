@@ -21,6 +21,8 @@ import BarChart from './BarChart.jsx';
 import ScatterPlot from './ScatterPlot.jsx';
 const CHART_TYPES = ['average', 'median', 'min', 'max', 'mode', '10', '25', '75', '90']
 const COMPLIMENTS = ['hot', 'more', 'plain', 'cute', 'list', 'note', 'plain', 'cool', 'funny', 'writer', 'photos']
+const SCATTER_PLOTS = ['review_count_vs_average_stars', 'review_count_vs_num_friends', 'years_elite_vs_average_stars', 'years_elite_vs_num_friends', 'years_elite_vs_review_count']
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -38,7 +40,7 @@ class Home extends React.Component {
       return null;
     }
     
-    let charts = CHART_TYPES.map((t) => {
+    let barcharts = CHART_TYPES.map((t) => {
       return (
         <BarChart
           key={`chart_${t}`}
@@ -49,17 +51,24 @@ class Home extends React.Component {
       )
     })
 
-    // let charts = null;
+    let scatterplots = SCATTER_PLOTS.map((s) => {
+      let axes = s.split('_vs_');
+      return (
+        <ScatterPlot
+          data={main.users_scatter[s]}
+          x={axes[0]}
+          y={axes[1]}
+        />
+      )
+    })
 
     return (
       <div>
         <div>
-          <ScatterPlot
-            data={main.users_scatter.review_count_vs_average_stars}
-          />
+          {scatterplots}
         </div>
         <div className={css(styles.homeContainer, styles.fadeIn)}>
-          {charts}
+          {barcharts}
         </div>
       </div>
     );
