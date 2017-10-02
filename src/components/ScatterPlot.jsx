@@ -11,7 +11,8 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import { css, StyleSheet } from 'aphrodite';
 import * as _ from 'lodash';
-import { VictoryChart, VictoryScatter, VictoryAxis } from 'victory';
+// import { VictoryChart, VictoryScatter, VictoryAxis } from 'victory';
+import { ScatterChart, XAxis, YAxis, CartesianGrid, Scatter } from 'recharts';
 
 
 // Local Components
@@ -33,19 +34,12 @@ export default class ScatterPlot extends React.Component {
 
     return (
       <div className={css(styles.chartContainer)}>
-        <VictoryChart
-          height={250}
-          width={500}
-          // domain={{x: [0, 2000], y: [0, 5]}}
-        >
-          <VictoryScatter
-            x={x}
-            y={y}
-            style={chartStyle}
-            size={1}
-            data={data}
-          />
-        </VictoryChart>
+        <ScatterChart width={800} height={500}>
+          <XAxis dataKey={x} />
+          <YAxis dataKey={y} />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Scatter data={data} fill="#D32323" />
+        </ScatterChart>
       </div>
     );
   }

@@ -20,8 +20,6 @@ import Home from './Home.jsx';
 import About from './About.jsx';
 
 // Data Files
-const PATH_TO_DATA = '../data/';
-const SUFFIX = '.json';
 
 const DATA_FILES = {
 
@@ -40,7 +38,7 @@ const DATA_FILES = {
     ],
 
   // 1
-  years_to_elite: _.range(2005, 2018),
+  years_to_elite: ['yearly'],
 
   // 2
   users_scatter: [
@@ -84,7 +82,7 @@ class Routes extends React.Component {
           file = require(`../data/clean/compliment_${f}.json`);
           break
         case 'years_to_elite':
-          file = require(`../data/final/years_to_elite/${f}.json`);
+          file = require(`../data/final/years_to_elite_good/${f}.json`);
           break
         case 'users_scatter':
           file = require(`../data/final/users_scatter/${f}.json`)

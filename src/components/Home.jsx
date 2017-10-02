@@ -17,11 +17,13 @@ import * as _ from 'lodash';
 import { fadeIn } from 'react-animations';
 
 // Local Components
-import BarChart from './BarChart.jsx';
+import BarGraph from './BarChart.jsx';
+import YearlyBarGraph from './YearlyBarGraph.jsx';
 import ScatterPlot from './ScatterPlot.jsx';
 const CHART_TYPES = ['average', 'median', 'min', 'max', 'mode', '10', '25', '75', '90']
 const COMPLIMENTS = ['hot', 'more', 'plain', 'cute', 'list', 'note', 'plain', 'cool', 'funny', 'writer', 'photos']
-const SCATTER_PLOTS = ['review_count_vs_average_stars', 'review_count_vs_num_friends', 'years_elite_vs_average_stars', 'years_elite_vs_num_friends', 'years_elite_vs_review_count']
+// const SCATTER_PLOTS = ['review_count_vs_average_stars', 'review_count_vs_num_friends', 'years_elite_vs_average_stars', 'years_elite_vs_num_friends', 'years_elite_vs_review_count']
+const SCATTER_PLOTS = ['years_elite_vs_average_stars']
 
 
 class Home extends React.Component {
@@ -34,41 +36,51 @@ class Home extends React.Component {
   render() {
 
     let { main } = this.props;
-    let data = main.overall.compliments;
+    let data = main.overall;
 
     if (_.isEmpty(data)) {
       return null;
     }
-    
-    let barcharts = CHART_TYPES.map((t) => {
-      return (
-        <BarChart
-          key={`chart_${t}`}
-          type={t}
-          data={data[t]}
-          categories={COMPLIMENTS.sort()}
-        />
-      )
-    })
 
-    let scatterplots = SCATTER_PLOTS.map((s) => {
-      let axes = s.split('_vs_');
-      return (
-        <ScatterPlot
-          data={main.users_scatter[s]}
-          x={axes[0]}
-          y={axes[1]}
-        />
-      )
-    })
+    debugger
+    
+    // let barcharts = CHART_TYPES.map((t) => {
+    //   return (
+    //     <BarGraph
+    //       key={`bar_chart_${t}`}
+    //       type={t}
+    //       data={data[t]}
+    //       // categories={COMPLIMENTS.sort()}
+    //     />
+    //   )
+    // })
+
+    let barcharts = null;
+
+    // let scatterplots = SCATTER_PLOTS.map((s) => {
+    //   let axes = s.split('_vs_');
+    //   return (
+    //     <ScatterPlot
+    //       key={`scatter_chart_${s}`}
+    //       data={main.users_scatter[s]}
+    //       x={axes[0]}
+    //       y={axes[1]}
+    //     />
+    //   )
+    // })
+
+    let scatterplots = null;
 
     return (
-      <div>
+      <div className={css(styles.homeContainer, styles.fadeIn)}>
         <div>
           {scatterplots}
         </div>
-        <div className={css(styles.homeContainer, styles.fadeIn)}>
+        <div>
           {barcharts}
+        </div>
+        <div>
+          <YearlyBarGraph data={main.years_to_elite.yearly}/>
         </div>
       </div>
     );

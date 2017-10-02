@@ -11,14 +11,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { css, StyleSheet } from 'aphrodite';
 import * as _ from 'lodash';
-import { VictoryBar, VictoryChart } from 'victory';
+import { BarChart, XAxis, YAxis, Bar, CartesianGrid } from 'recharts';
 
 // Local Components
 
 // Data Files
 
 
-export default class BarChart extends React.Component {
+export default class BarGraph extends React.Component {
 
   render() {
 
@@ -31,20 +31,12 @@ export default class BarChart extends React.Component {
     return (
       <div className={css(styles.chartContainer)}>
         <h2 className={css(styles.header)}>{type}</h2>
-        <VictoryChart
-          domainPadding='20'
-          height={400}
-          width={1000}        
-        >
-          <VictoryBar
-            data={data}
-            animate={{duration: 2000}}
-            x='type'
-            y='value'
-            labels={(d) => d.y}
-            style={chartStyle}
-          />
-        </VictoryChart>
+        <BarChart width={800} height={500} data={data}>
+          <XAxis dataKey={'type'} />
+          <YAxis />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Bar dataKey={'value'} fill='#D32323'/>
+        </BarChart>
       </div>
     );
   }
