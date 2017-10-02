@@ -13,16 +13,11 @@ import { css, StyleSheet } from 'aphrodite';
 import * as _ from 'lodash';
 import { BarChart, XAxis, YAxis, Bar, CartesianGrid, Tooltip } from 'recharts';
 
-// Local Components
-
-// Data Files
-
-
 export default class YearlyBarGraph extends React.Component {
 
   render() {
 
-    let { data, type } = this.props;
+    let { data } = this.props;
 
     if (_.isEmpty(data)) {
       return null;
@@ -39,7 +34,7 @@ export default class YearlyBarGraph extends React.Component {
     })
 
     return (
-      <div className={css(styles.chartContainer)}>
+      <Link className={css(styles.chartContainer)} to={'/'}>
         <h2 className={css(styles.header)}>Years To Become Elite</h2>
         <BarChart
           width={1000}
@@ -69,22 +64,30 @@ export default class YearlyBarGraph extends React.Component {
           />
           { bars }
         </BarChart>
-      </div>
+      </Link>
     );
   }
 }
 
 const styles = StyleSheet.create({
   chartContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     padding: '10px 0',
     textAlign: 'center',
+    textDecoration: 'none',
   },
 
   header: {
+    borderBottom: '3px solid #D32323',
     color: '#333',
     fontFamily: 'Montserrat, sans-serif',
     fontSize: '1.5em',
+    padding: '5px 0',
+    textAlign: 'center',
     textTransform: 'uppercase',
+    width: '350px',
   },
 })
 
@@ -96,12 +99,6 @@ const labelStyle = {
 }
 
 const itemStyle = {
-  color: '#333',
-  fontFamily: 'Muli, sans-serif',
-  fontSize: '0.85em',
-}
-
-const tickStyle = {
   color: '#333',
   fontFamily: 'Muli, sans-serif',
   fontSize: '0.85em',
