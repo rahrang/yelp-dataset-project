@@ -13,70 +13,93 @@ import { css, StyleSheet } from 'aphrodite';
 import * as _ from 'lodash';
 import { BarChart, XAxis, YAxis, Bar, CartesianGrid, Tooltip } from 'recharts';
 
-export default class YearlyBarGraph extends React.Component {
+export default class BarGraph extends React.Component {
 
   render() {
 
-    let { data } = this.props;
+    let { title, link, data, xKey, yKey, xTicks, yTicks, bars, width, height } = this.props;
 
     if (_.isEmpty(data)) {
       return null;
     }
 
-    let bars = _.range(0, 14).map((i) => {
-      return (
-        <Bar
-          dataKey={_.toString(i)}
-          barSize={40}
-          fill={(i % 2 === 0) ? '#D32323' : '#333333'}
-        />
-      )
-    })
+    let chartBars = <Bar dataKey={'value'} fill='#D32323'/>
+    if (bars) {
+      chartBars = bars.map((i) => {
+        return (
+          <Bar
+            key={`num_years_to_elite: ${i}`}
+            dataKey={_.toString(i)}
+            barSize={40}
+            fill={(i % 2 === 0) ? '#D32323' : '#333333'}
+          />
+        )
+      })
+    }
 
-    return (
-      <Link className={css(styles.chartContainer)} to={'/'}>
-        <h2 className={css(styles.header)}>Years To Become Elite</h2>
+    let toRender = (
+      <div className={css(styles.chartContainer)}>
+        <h2 className={css(styles.header)}>{title}</h2>
         <BarChart
-          width={1000}
-          height={500}
+          width={width ? width : 800}
+          height={height ? height : 500}
           data={data}
+          barGap={0}
         >
           <XAxis
-            dataKey={'year'}
+            dataKey={xKey}
             tick={itemStyle}
+            ticks={xTicks && xTicks}
             tickLine={false}
-            // label={'First Year Elite'}
             padding={{ left: 20, right: 20 }}
           />
           <YAxis
+            dataKey={yKey && yKey}
             tick={itemStyle}
+            ticks={yTicks && yTicks}
             tickLine={false}
-            ticks={_.range(0, 2200, 200)}
-            // label={'Users'}
           />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip
             separator={': '}
             tick={itemStyle}
-            labelStyle={labelStyle}
             itemStyle={itemStyle}
+            labelStyle={labelStyle}
+            wrapperStyle={wrapperStyle}
             animationDuration={1000}
           />
-          { bars }
+          { chartBars }
         </BarChart>
-      </Link>
+      </div>
+    )
+
+    return (
+      link
+        ?
+          <Link className={css(styles.linkContainer)} to={link}>
+            { toRender }
+          </Link>
+        : 
+          <div id='no-link-bar-chart-container'>
+            { toRender }
+          </div>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  linkContainer: {
+    cursor: 'pointer',
+    textDecoration: 'none',
+  },
+
   chartContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     padding: '10px 0',
     textAlign: 'center',
-    textDecoration: 'none',
   },
 
   header: {
@@ -84,10 +107,9 @@ const styles = StyleSheet.create({
     color: '#333',
     fontFamily: 'Montserrat, sans-serif',
     fontSize: '1.5em',
-    padding: '5px 0',
+    padding: '5px 20px',
     textAlign: 'center',
     textTransform: 'uppercase',
-    width: '350px',
   },
 })
 
@@ -102,4 +124,9 @@ const itemStyle = {
   color: '#333',
   fontFamily: 'Muli, sans-serif',
   fontSize: '0.85em',
+}
+
+const wrapperStyle = {
+  backgroundColor: '#F5F5F5',
+  border: '1px solid #EBC074',
 }

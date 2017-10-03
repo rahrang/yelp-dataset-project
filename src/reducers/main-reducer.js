@@ -3,8 +3,7 @@ import { MainConstants } from '../actions/main-actions';
 const defaultState = {
     compliments: {},
     years_to_elite: {},
-    users_scatter: {},
-    overall: {}
+    reviews: {}
 };
 
 const MainReducer = (state = defaultState, action) => {

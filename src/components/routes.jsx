@@ -18,6 +18,9 @@ import { MainActions } from '../actions/main-actions';
 import Navbar from './Navbar.jsx';
 import Home from './Home.jsx';
 import About from './About.jsx';
+import Compliments from './Compliments.jsx';
+import EliteYears from './EliteYears.jsx';
+import Reviews from './Reviews.jsx';
 
 // Data Files
 
@@ -25,35 +28,29 @@ const DATA_FILES = {
 
   // 0
   compliments: [
-      'cool',
-      'cute',
-      'funny',
-      'hot',
-      'list',
-      'more',
-      'note',
-      'photos',
-      'plain',
-      'writer'
-    ],
+    'all_stats',
+    'cool',
+    'cute',
+    'funny',
+    'hot',
+    'list',
+    'more',
+    'note',
+    'photos',
+    'plain',
+    'writer'
+  ],
 
   // 1
-  years_to_elite: ['yearly'],
+  elite_years: _.range(2005, 2018)
+  .concat(['yearly', 'num_years_elite']),
 
   // 2
-  users_scatter: [
-      'review_count_vs_average_stars',
-      'review_count_vs_num_friends',
-      'years_elite_vs_average_stars',
-      'years_elite_vs_num_friends',
-      'years_elite_vs_review_count'
-    ],
-
-  // 3
-  overall: ['compliments']
+  reviews: [
+    'average_stars',
+    'review_count'
+  ]
 }
-
-const FILE = '../data/clean/cool.json';
 
 class Routes extends React.Component {
 
@@ -65,9 +62,8 @@ class Routes extends React.Component {
     let data = this.collectData();
     this.props.mainActions.storeData(
       data[0],  // compliments
-      data[1],  // years_to_elite
-      data[2],  // users_scatter
-      data[3]   // overall
+      data[1],  // elite_years
+      data[2]  // reviews
     )
   }
 
@@ -79,16 +75,13 @@ class Routes extends React.Component {
       
       switch (dataItem[0]) {
         case 'compliments':
-          file = require(`../data/clean/compliment_${f}.json`);
+          file = require(`../data/final/compliments/${f}.json`);
           break
-        case 'years_to_elite':
-          file = require(`../data/final/years_to_elite_good/${f}.json`);
+        case 'elite_years':
+          file = require(`../data/final/elite_years/${f}.json`);
           break
-        case 'users_scatter':
-          file = require(`../data/final/users_scatter/${f}.json`)
-          break
-        case 'overall':
-          file = require(`../data/final/${f}.json`)
+        case 'reviews':
+          file = require(`../data/final/reviews/${f}.json`)
           break
         default:
           return
@@ -119,6 +112,9 @@ class Routes extends React.Component {
           <Switch>
             <Route exact path={'/'} component={Home} />
             <Route path={'/about'} component={About} />
+            <Route path={'/compliments'} component={Compliments} />
+            <Route path={'/elite_years'} component={EliteYears} />
+            <Route path={'/reviews'} component={Reviews} />
           </Switch>
         </div>
       </div>
