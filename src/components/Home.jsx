@@ -20,7 +20,6 @@ import BarGraph from './charts/BarGraph.jsx';
 
 class Home extends React.Component {
   render() {
-
     let { main } = this.props;
 
     if (_.isEmpty(main.elite_years)) {
@@ -30,7 +29,7 @@ class Home extends React.Component {
     const BAR_CHARTS = [
       {
         title: 'Years to Elite',
-        link: '/elite_years',
+        link: '/yelp-dataset-project/elite_years',
         data: main.elite_years.yearly,
         xKey: 'year',
         yTicks: _.range(0, 2200, 200),
@@ -39,14 +38,14 @@ class Home extends React.Component {
       },
       {
         title: 'Average Compliments',
-        // link: '/compliments',
+        // link: '/yelp-dataset-project/compliments',
         data: main.compliments.all_stats.average,
         xKey: 'type',
-        yKey: 'value',
+        yKey: 'value'
       }
-    ]
+    ];
 
-    let barCharts = BAR_CHARTS.map((chart) => {
+    let barCharts = BAR_CHARTS.map(chart => {
       return (
         <BarGraph
           key={chart.title}
@@ -59,7 +58,7 @@ class Home extends React.Component {
           height={chart.height}
           width={chart.width}
         />
-      )
+      );
     });
 
     return (
@@ -81,11 +80,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 
   fadeIn: {
     animationName: fadeIn,
-    animationDuration: '1s',
+    animationDuration: '1s'
   }
-})
+});

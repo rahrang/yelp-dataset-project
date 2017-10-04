@@ -21,7 +21,7 @@ export default class Navbar extends React.Component {
     return (
       <div id="navbar-container" className={css(styles.fadeIn)}>
         <div className={css(styles.headerContainer)}>
-          <Link to="/" className={css(styles.headerLink)}>
+          <Link to="/yelp-dataset-project" className={css(styles.headerLink)}>
             <img
               src="images/logo_red.png"
               className={css(styles.logo)}
@@ -30,7 +30,10 @@ export default class Navbar extends React.Component {
             <h1 className={css(styles.header)}>The Elite Project</h1>
           </Link>
           <div className={css(styles.creditContainer)}>
-            <Link className={css(styles.creditLink)} to="/about">
+            <Link
+              className={css(styles.creditLink)}
+              to="/yelp-dataset-project/about"
+            >
               About
             </Link>
             |

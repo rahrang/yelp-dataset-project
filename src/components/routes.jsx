@@ -101,11 +101,17 @@ class Routes extends React.Component {
         <div className={css(styles.mainContainer)}>
           <Navbar />
           <Switch>
-            <Route exact path={'/'} component={Home} />
-            <Route path={'/about'} component={About} />
-            <Route path={'/compliments'} component={Compliments} />
-            <Route path={'/elite_years'} component={EliteYears} />
-            <Route path={'/reviews'} component={Reviews} />
+            <Route exact path={'/yelp-dataset-project'} component={Home} />
+            <Route path={'/yelp-dataset-project/about'} component={About} />
+            <Route
+              path={'/yelp-dataset-project/compliments'}
+              component={Compliments}
+            />
+            <Route
+              path={'/yelp-dataset-project/elite_years'}
+              component={EliteYears}
+            />
+            <Route path={'/yelp-dataset-project/reviews'} component={Reviews} />
           </Switch>
         </div>
       </div>
