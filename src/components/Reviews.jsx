@@ -18,7 +18,7 @@ import { fadeIn } from 'react-animations';
 // Local Components
 import BarGraph from './charts/BarGraph.jsx';
 
-class Home extends React.Component {
+class Reviews extends React.Component {
   render() {
 
     let { main } = this.props;
@@ -30,7 +30,7 @@ class Home extends React.Component {
     const BAR_CHARTS = [
       {
         title: 'Years to Elite',
-        link: '/elite_years',
+        link: '/',
         data: main.elite_years.yearly,
         xKey: 'year',
         yTicks: _.range(0, 2200, 200),
@@ -39,7 +39,7 @@ class Home extends React.Component {
       },
       {
         title: 'Average Compliments',
-        // link: '/compliments',
+        link: '/',
         data: main.compliments.all_stats.average,
         xKey: 'type',
         yKey: 'value',
@@ -74,7 +74,7 @@ const mapStateToProps = state => {
   return { main: state.main };
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Reviews);
 
 const styles = StyleSheet.create({
   homeContainer: {

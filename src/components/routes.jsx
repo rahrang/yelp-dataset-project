@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
 
 // Redux
 import { connect } from 'react-redux';
@@ -8,6 +7,10 @@ import { bindActionCreators } from 'redux';
 // React Router
 import { Switch, Route } from 'react-router-dom';
 
+// NPM Modules
+import { StyleSheet, css } from 'aphrodite';
+import * as _ from 'lodash';
+
 // Actions
 import { MainActions } from '../actions/main-actions';
 
@@ -15,11 +18,39 @@ import { MainActions } from '../actions/main-actions';
 import Navbar from './Navbar.jsx';
 import Home from './Home.jsx';
 import About from './About.jsx';
+import Compliments from './Compliments.jsx';
+import EliteYears from './EliteYears.jsx';
+import Reviews from './Reviews.jsx';
 
 // Data Files
-// const FILES = ['compliments', 'average_stars', 'cool', 'fans', 'funny', 'num_friends', 'review_count', 'useful']
-const FILES = ['compliments']
-const COMPLIMENTS = ['cool', 'cute', 'funny', 'hot', 'list', 'more', 'note', 'photos', 'plain', 'writer']
+
+const DATA_FILES = {
+
+  // 0
+  compliments: [
+    'all_stats',
+    'cool',
+    'cute',
+    'funny',
+    'hot',
+    'list',
+    'more',
+    'note',
+    'photos',
+    'plain',
+    'writer'
+  ],
+
+  // 1
+  elite_years: _.range(2005, 2018)
+  .concat(['yearly', 'num_years_elite']),
+
+  // 2
+  reviews: [
+    'average_stars',
+    'review_count'
+  ]
+}
 
 class Routes extends React.Component {
 
@@ -29,24 +60,48 @@ class Routes extends React.Component {
 
   storeData = () => {
     let data = this.collectData();
-    this.props.mainActions.storeData(data[0], data[1])
+    this.props.mainActions.storeData(
+      data[0],  // compliments
+      data[1],  // elite_years
+      data[2]  // reviews
+    )
+  }
+
+  collectDataFromFolder = (dataItem) => {
+    let data = {};
+    dataItem[1].forEach((f) => {
+      
+      let file = '';
+      
+      switch (dataItem[0]) {
+        case 'compliments':
+          file = require(`../data/final/compliments/${f}.json`);
+          break
+        case 'elite_years':
+          file = require(`../data/final/elite_years/${f}.json`);
+          break
+        case 'reviews':
+          file = require(`../data/final/reviews/${f}.json`)
+          break
+        default:
+          return
+      }
+
+      data[f] = file;
+    
+    })
+    return data
   }
 
   collectData = () => {
-    let data = {}
-    let compliments = {}
+
+    let data = []
     
-    FILES.forEach((f) => {
-      let point = require(`../data/final/${f}.json`);
-      data[f] = point
-    });
-
-    COMPLIMENTS.forEach((c) => {
-      let point = require(`../data/clean/compliment_${c}.json`);
-      compliments[c] = point
-    });
-
-    return [data, compliments]
+    Object.entries(DATA_FILES).forEach((dataItem) => {
+      data.push(this.collectDataFromFolder(dataItem));
+    })
+    
+    return data
   }
 
   render() {
@@ -57,6 +112,9 @@ class Routes extends React.Component {
           <Switch>
             <Route exact path={'/'} component={Home} />
             <Route path={'/about'} component={About} />
+            <Route path={'/compliments'} component={Compliments} />
+            <Route path={'/elite_years'} component={EliteYears} />
+            <Route path={'/reviews'} component={Reviews} />
           </Switch>
         </div>
       </div>

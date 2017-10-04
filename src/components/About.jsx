@@ -31,7 +31,7 @@ export default class About extends React.Component {
 
     return (
       <div className={css(styles.aboutContainer, styles.fadeIn)}>
-        About Container
+        Under Construction!
       </div>
     );
   }
@@ -39,6 +39,10 @@ export default class About extends React.Component {
 
 const styles = StyleSheet.create({
   aboutContainer: {
+    color: '#333',
+    fontFamily: 'Muli, sans-serif',
+    fontSize: '1em',
+    padding: '10px',
   },
 
   fadeIn: {

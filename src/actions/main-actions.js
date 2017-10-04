@@ -4,9 +4,10 @@ export const MainConstants = {
 
 export const MainActions = {
 
-    storeData: (data, compliments) => ({
+    storeData: (compliments, elite_years, reviews, overall) => ({
         type: 'STORE_DATA',
-        data,
-        compliments
+        compliments,
+        elite_years,
+        reviews
     })
 };
