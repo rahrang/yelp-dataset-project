@@ -25,7 +25,6 @@ import Reviews from './Reviews.jsx';
 // Data Files
 
 const DATA_FILES = {
-
   // 0
   compliments: [
     'all_stats',
@@ -42,18 +41,13 @@ const DATA_FILES = {
   ],
 
   // 1
-  elite_years: _.range(2005, 2018)
-  .concat(['yearly', 'num_years_elite']),
+  elite_years: _.range(2005, 2018).concat(['yearly', 'num_years_elite']),
 
   // 2
-  reviews: [
-    'average_stars',
-    'review_count'
-  ]
-}
+  reviews: ['average_stars', 'review_count']
+};
 
 class Routes extends React.Component {
-
   componentDidMount() {
     this.storeData();
   }
@@ -61,48 +55,45 @@ class Routes extends React.Component {
   storeData = () => {
     let data = this.collectData();
     this.props.mainActions.storeData(
-      data[0],  // compliments
-      data[1],  // elite_years
-      data[2]  // reviews
-    )
-  }
+      data[0], // compliments
+      data[1], // elite_years
+      data[2] // reviews
+    );
+  };
 
-  collectDataFromFolder = (dataItem) => {
+  collectDataFromFolder = dataItem => {
     let data = {};
-    dataItem[1].forEach((f) => {
-      
+    dataItem[1].forEach(f => {
       let file = '';
-      
+
       switch (dataItem[0]) {
         case 'compliments':
-          file = require(`../data/final/compliments/${f}.json`);
-          break
+          file = require(`data/compliments/${f}.json`);
+          break;
         case 'elite_years':
-          file = require(`../data/final/elite_years/${f}.json`);
-          break
+          file = require(`data/elite_years/${f}.json`);
+          break;
         case 'reviews':
-          file = require(`../data/final/reviews/${f}.json`)
-          break
+          file = require(`data/reviews/${f}.json`);
+          break;
         default:
-          return
+          return;
       }
 
       data[f] = file;
-    
-    })
-    return data
-  }
+    });
+    return data;
+  };
 
   collectData = () => {
+    let data = [];
 
-    let data = []
-    
-    Object.entries(DATA_FILES).forEach((dataItem) => {
+    Object.entries(DATA_FILES).forEach(dataItem => {
       data.push(this.collectDataFromFolder(dataItem));
-    })
-    
-    return data
-  }
+    });
+
+    return data;
+  };
 
   render() {
     return (
@@ -122,8 +113,7 @@ class Routes extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-});
+const styles = StyleSheet.create({});
 
 const mapStateToProps = state => {
   return { main: state.main };
