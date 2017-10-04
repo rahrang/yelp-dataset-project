@@ -68,13 +68,13 @@ class Routes extends React.Component {
 
       switch (dataItem[0]) {
         case 'compliments':
-          file = require(`data/compliments/${f}.json`);
+          file = require(`../data/final/compliments/${f}.json`);
           break;
         case 'elite_years':
-          file = require(`data/elite_years/${f}.json`);
+          file = require(`../data/final/elite_years/${f}.json`);
           break;
         case 'reviews':
-          file = require(`data/reviews/${f}.json`);
+          file = require(`../data/final/reviews/${f}.json`);
           break;
         default:
           return;
