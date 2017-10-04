@@ -17,6 +17,7 @@ import { fadeIn } from 'react-animations';
 
 // Local Components
 import BarGraph from './charts/BarGraph.jsx';
+import RadarGraph from './charts/RadarGraph.jsx';
 
 class Home extends React.Component {
   render() {
@@ -37,7 +38,7 @@ class Home extends React.Component {
         width: 1000
       },
       {
-        title: 'Average Compliments',
+        title: 'Average Review Compliments',
         // link: '/yelp-dataset-project/compliments',
         data: main.compliments.all_stats.average,
         xKey: 'type',
@@ -63,7 +64,15 @@ class Home extends React.Component {
 
     return (
       <div className={css(styles.homeContainer, styles.fadeIn)}>
-        {barCharts}
+        <div className={css(styles.barChartContainer)}>{barCharts}</div>
+        <div className={css(styles.radarChartContainer)}>
+          <RadarGraph
+            title={'Average User Compliments'}
+            link={null}
+            data={main.users.review_votes}
+            dataKey={'average'}
+          />
+        </div>
       </div>
     );
   }

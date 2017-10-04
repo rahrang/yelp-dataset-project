@@ -1,6 +1,6 @@
 /***
  * Yelp Dataset Project
- * This is the main page of the app.
+ * This is a reusable BarChart component.
  * author: @rahrang
 */
 
@@ -14,27 +14,38 @@ import * as _ from 'lodash';
 import { BarChart, XAxis, YAxis, Bar, CartesianGrid, Tooltip } from 'recharts';
 
 export default class BarGraph extends React.Component {
-
   render() {
-
-    let { title, link, data, xKey, yKey, xTicks, yTicks, bars, width, height } = this.props;
+    let {
+      title,
+      link,
+      data,
+      xKey,
+      yKey,
+      xTicks,
+      yTicks,
+      bars,
+      width,
+      height
+    } = this.props;
 
     if (_.isEmpty(data)) {
       return null;
     }
 
-    let chartBars = <Bar dataKey={'value'} fill='#D32323'/>
+    let chartBars = <Bar dataKey={'value'} fill="#D32323" minPointSize={5} />;
+
     if (bars) {
-      chartBars = bars.map((i) => {
+      chartBars = bars.map(i => {
         return (
           <Bar
             key={`num_years_to_elite: ${i}`}
             dataKey={_.toString(i)}
             barSize={40}
-            fill={(i % 2 === 0) ? '#D32323' : '#333333'}
+            fill={i % 2 === 0 ? '#D32323' : '#333333'}
+            minPointSize={5}
           />
-        )
-      })
+        );
+      });
     }
 
     let toRender = (
@@ -59,7 +70,7 @@ export default class BarGraph extends React.Component {
             ticks={yTicks && yTicks}
             tickLine={false}
           />
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid stroke="#999999" strokeDasharray="3 3" />
           <Tooltip
             separator={': '}
             tick={itemStyle}
@@ -68,21 +79,17 @@ export default class BarGraph extends React.Component {
             wrapperStyle={wrapperStyle}
             animationDuration={1000}
           />
-          { chartBars }
+          {chartBars}
         </BarChart>
       </div>
-    )
+    );
 
-    return (
-      link
-        ?
-          <Link className={css(styles.linkContainer)} to={link}>
-            { toRender }
-          </Link>
-        : 
-          <div id='no-link-bar-chart-container'>
-            { toRender }
-          </div>
+    return link ? (
+      <Link className={css(styles.linkContainer)} to={link}>
+        {toRender}
+      </Link>
+    ) : (
+      <div id="no-link-bar-chart-container">{toRender}</div>
     );
   }
 }
@@ -90,7 +97,7 @@ export default class BarGraph extends React.Component {
 const styles = StyleSheet.create({
   linkContainer: {
     cursor: 'pointer',
-    textDecoration: 'none',
+    textDecoration: 'none'
   },
 
   chartContainer: {
@@ -99,7 +106,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: '10px 0',
-    textAlign: 'center',
+    textAlign: 'center'
   },
 
   header: {
@@ -109,24 +116,24 @@ const styles = StyleSheet.create({
     fontSize: '1.5em',
     padding: '5px 20px',
     textAlign: 'center',
-    textTransform: 'uppercase',
-  },
-})
+    textTransform: 'uppercase'
+  }
+});
 
 const labelStyle = {
   color: '#D32323',
   fontFamily: 'Muli, sans-serif',
   fontSize: '1em',
-  borderBottom: '2px solid #333',
-}
+  borderBottom: '2px solid #333'
+};
 
 const itemStyle = {
   color: '#333',
   fontFamily: 'Muli, sans-serif',
-  fontSize: '0.85em',
-}
+  fontSize: '0.85em'
+};
 
 const wrapperStyle = {
   backgroundColor: '#F5F5F5',
-  border: '1px solid #EBC074',
-}
+  border: '1px solid #EBC074'
+};

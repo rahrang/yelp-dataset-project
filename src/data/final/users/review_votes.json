@@ -1,0 +1,20 @@
+[
+  {
+    "type": "cool",
+    "average": 373.15,
+    "median": 11.1,
+    "max": 201062
+  },
+  {
+    "type": "funny",
+    "average": 263.19,
+    "median": 14.36,
+    "max": 192663
+  },
+  {
+    "type": "useful",
+    "average": 479.92,
+    "median": 44.98,
+    "max": 202867
+  }
+]

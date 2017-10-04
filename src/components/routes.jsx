@@ -44,7 +44,10 @@ const DATA_FILES = {
   elite_years: _.range(2005, 2018).concat(['yearly', 'num_years_elite']),
 
   // 2
-  reviews: ['average_stars', 'review_count']
+  reviews: ['average_stars', 'review_count'],
+
+  // 3
+  users: ['review_votes']
 };
 
 class Routes extends React.Component {
@@ -57,7 +60,8 @@ class Routes extends React.Component {
     this.props.mainActions.storeData(
       data[0], // compliments
       data[1], // elite_years
-      data[2] // reviews
+      data[2], // reviews
+      data[3] // users
     );
   };
 
@@ -75,6 +79,9 @@ class Routes extends React.Component {
           break;
         case 'reviews':
           file = require(`../data/final/reviews/${f}.json`);
+          break;
+        case 'users':
+          file = require(`../data/final/users/${f}.json`);
           break;
         default:
           return;
