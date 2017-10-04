@@ -39,7 +39,7 @@ class Home extends React.Component {
       },
       {
         title: 'Average Compliments',
-        link: '/compliments',
+        // link: '/compliments',
         data: main.compliments.all_stats.average,
         xKey: 'type',
         yKey: 'value',
