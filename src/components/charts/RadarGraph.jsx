@@ -23,8 +23,6 @@ export default class RadarGraph extends React.Component {
   render() {
     let { title, link, data, dataKey, width, height } = this.props;
 
-    debugger;
-
     if (_.isEmpty(data)) {
       return null;
     }
