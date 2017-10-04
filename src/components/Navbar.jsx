@@ -16,39 +16,36 @@ import { fadeIn } from 'react-animations';
 
 // Data Files
 
-
 export default class Navbar extends React.Component {
   render() {
-
     return (
-      <div id='navbar-container' className={css(styles.fadeIn)}>
+      <div id="navbar-container" className={css(styles.fadeIn)}>
         <div className={css(styles.headerContainer)}>
-          <Link to='/' className={css(styles.headerLink)}>
-            <img src='../images/logo_red.png' className={css(styles.logo)} alt={'yelp logo'} />
-            <h1 className={css(styles.header)}>  
-                The Elite Project
-            </h1>
+          <Link to="/" className={css(styles.headerLink)}>
+            <img
+              src="images/logo_red.png"
+              className={css(styles.logo)}
+              alt={'yelp logo'}
+            />
+            <h1 className={css(styles.header)}>The Elite Project</h1>
           </Link>
           <div className={css(styles.creditContainer)}>
-            <Link
-              className={css(styles.creditLink)}
-              to='/about'
-            >
+            <Link className={css(styles.creditLink)} to="/about">
               About
             </Link>
             |
             <Link
               className={css(styles.creditLink)}
-              to='https://github.com/rahrang/yelp-dataset-project'
-              target='blank'
+              to="https://github.com/rahrang/yelp-dataset-project"
+              target="blank"
             >
               GitHub
             </Link>
             |
             <Link
               className={css(styles.creditLink)}
-              to='http://rahrang.xyz'
-              target='blank'
+              to="http://rahrang.xyz"
+              target="blank"
             >
               Rahul Rangnekar
             </Link>
@@ -66,7 +63,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '10px 0',
+    padding: '10px 0'
   },
 
   headerLink: {
@@ -76,13 +73,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textDecoration: 'none',
     ':hover': {
-      color: '#333',
+      color: '#333'
     }
   },
 
   logo: {
     height: '77px',
-    width: '120px',
+    width: '120px'
   },
 
   header: {
@@ -91,7 +88,7 @@ const styles = StyleSheet.create({
     letterSpacing: '0.025em',
     margin: 0,
     padding: '0 0 0 10px',
-    textTransform: 'uppercase',
+    textTransform: 'uppercase'
   },
 
   creditContainer: {
@@ -100,7 +97,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     fontFamily: 'Muli, sans-serif',
-    padding: '0 20px 0 0',
+    padding: '0 20px 0 0'
   },
 
   creditLink: {
@@ -110,12 +107,12 @@ const styles = StyleSheet.create({
     margin: '0 5px',
     textDecoration: 'none',
     ':hover': {
-      color: '#333',
-    },
+      color: '#333'
+    }
   },
 
   fadeIn: {
     animationName: fadeIn,
-    animationDuration: '1s',
+    animationDuration: '1s'
   }
-})
+});
