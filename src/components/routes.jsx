@@ -44,10 +44,10 @@ const DATA_FILES = {
   years: _.range(2005, 2018).concat(['yearly', 'num_years_elite']),
 
   // 2
-  reviews: ['average_stars', 'review_count'],
+  reviews: [],
 
   // 3
-  users: ['review_votes']
+  users: ['review_votes', 'average_stars', 'review_count']
 };
 
 class Routes extends React.Component {

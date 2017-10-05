@@ -17,12 +17,7 @@ import { fadeIn } from 'react-animations';
 
 // Local Components
 import BarGraph from './charts/BarGraph.jsx';
-
-const BAR_CHARTS = ['review_count', 'average_stars'];
-const TITLE_MAPPER = {
-  average_stars: 'Average Stars on Elite Reviews',
-  review_count: 'Number of Elite Reviews'
-};
+import RadarGraph from './charts/RadarGraph.jsx';
 
 class Reviews extends React.Component {
   render() {
@@ -32,36 +27,12 @@ class Reviews extends React.Component {
       return null;
     }
 
-    let charts = [];
-    BAR_CHARTS.forEach(type => {
-      charts.push({
-        title: TITLE_MAPPER[type],
-        data: main.reviews[type],
-        xKey: 'bucket',
-        width: 500,
-        height: 400,
-        showTooltip: true
-      });
-    });
-
-    let barCharts = charts.map(chart => {
-      return (
-        <BarGraph
-          key={chart.title}
-          title={chart.title}
-          link={null}
-          data={chart.data}
-          xKey={chart.xKey}
-          height={chart.height}
-          width={chart.width}
-          showTooltip={chart.showTooltip}
-        />
-      );
-    });
+    let barCharts = null;
 
     return (
       <div className={css(styles.reviewContainer, styles.fadeIn)}>
-        {barCharts}
+        <h2 className={css(styles.sectionHeader)}>Elite Reviews</h2>
+        <div className={css(styles.bars)}>{barCharts}</div>
       </div>
     );
   }
@@ -79,6 +50,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+
+  sectionHeader: {
+    borderBottom: '3px solid #D32323',
+    color: '#333',
+    fontFamily: 'Montserrat, sans-serif',
+    fontSize: '1.375em',
+    padding: '5px 0',
+    textAlign: 'left'
   },
 
   fadeIn: {

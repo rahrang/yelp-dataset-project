@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     borderBottom: '3px solid #D32323',
     color: '#333',
     fontFamily: 'Montserrat, sans-serif',
-    fontSize: '1.5em',
+    fontSize: '1.125em',
     padding: '5px 20px',
     textAlign: 'center',
     textTransform: 'uppercase'

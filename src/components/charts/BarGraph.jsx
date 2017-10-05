@@ -23,9 +23,12 @@ export default class BarGraph extends React.Component {
       yKey,
       xTicks,
       yTicks,
+      xLabel,
+      yLabel,
       bars,
       width,
       height,
+      minPointSize,
       showTooltip,
       hideAxes
     } = this.props;
@@ -35,7 +38,11 @@ export default class BarGraph extends React.Component {
     }
 
     let chartBars = (
-      <Bar dataKey={'value'} fill="#D32323" /*minPointSize={5}*/ />
+      <Bar
+        dataKey={'value'}
+        fill="#D32323"
+        minPointSize={minPointSize ? minPointSize : 0}
+      />
     );
 
     if (bars) {
@@ -68,6 +75,16 @@ export default class BarGraph extends React.Component {
             ticks={xTicks && xTicks}
             tickLine={false}
             padding={{ left: 20, right: 20 }}
+            label={
+              xLabel && {
+                value: xLabel,
+                position: 'insideBottom',
+                dy: 10,
+                color: '#333',
+                fontFamily: 'Muli, sans-serif',
+                fontSize: '1em'
+              }
+            }
           />
           <YAxis
             hide={hideAxes}
@@ -75,6 +92,17 @@ export default class BarGraph extends React.Component {
             tick={itemStyle}
             ticks={yTicks && yTicks}
             tickLine={false}
+            label={
+              yLabel && {
+                value: yLabel,
+                position: 'inside',
+                angle: -90,
+                dx: -25,
+                color: '#333',
+                fontFamily: 'Muli, sans-serif',
+                fontSize: '1em'
+              }
+            }
           />
           <CartesianGrid stroke="#999999" strokeDasharray="3 3" />
           {showTooltip && (
@@ -93,19 +121,20 @@ export default class BarGraph extends React.Component {
     );
 
     return link ? (
-      <Link className={css(styles.linkContainer)} to={link}>
+      <Link className={css(styles.container)} to={link}>
         {toRender}
       </Link>
     ) : (
-      <div id="no-link-bar-chart-container">{toRender}</div>
+      <div className={css(styles.container)}>{toRender}</div>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  linkContainer: {
+  container: {
     cursor: 'pointer',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    margin: '10px'
   },
 
   chartContainer: {
@@ -121,7 +150,7 @@ const styles = StyleSheet.create({
     borderBottom: '3px solid #D32323',
     color: '#333',
     fontFamily: 'Montserrat, sans-serif',
-    fontSize: '1.5em',
+    fontSize: '1.125em',
     padding: '5px 20px',
     textAlign: 'center',
     textTransform: 'uppercase'
@@ -132,6 +161,26 @@ const styles = StyleSheet.create({
       borderBottom: '3px solid #0073BB',
       color: '#0073BB'
     }
+  },
+
+  barChart: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  label: {
+    color: '#333',
+    fontFamily: 'Muli, sans-serif',
+    fontSize: '1em',
+    margin: '0',
+    padding: '0'
+  },
+
+  ylabel: {
+    '-webkit-transform': 'rotate(-90deg)',
+    '-moz-transform': 'rotate(-90deg)'
   }
 });
 

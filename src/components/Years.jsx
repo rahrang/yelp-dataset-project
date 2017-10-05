@@ -34,6 +34,8 @@ class Years extends React.Component {
         title: year,
         data: main.years[year],
         xKey: 'year',
+        xLabel: null,
+        yLabel: '# Users inducted into Elite',
         bars: _.range(0, 14),
         width: 400,
         height: 400,
@@ -49,6 +51,8 @@ class Years extends React.Component {
           link={chart.link}
           data={chart.data}
           xKey={chart.xKey}
+          xLabel={chart.xLabel}
+          yLabel={chart.yLabel}
           yTicks={chart.yTicks}
           bars={chart.bars}
           height={chart.height}
@@ -61,11 +65,14 @@ class Years extends React.Component {
     return (
       <div className={css(styles.eliteYearsContainer, styles.fadeIn)}>
         <div className={css(styles.yearlyChart)}>
+          <h2 className={css(styles.sectionHeader)}>Elite Years</h2>
           <BarGraph
             key={'Years to Elite'}
             title={'Years to Elite'}
             data={main.years.yearly}
             xKey={'year'}
+            xLabel={'Year'}
+            yLabel={'# Users inducted into Elite'}
             yTicks={_.range(0, 2200, 200)}
             bars={_.range(0, 14)}
             width={1000}
@@ -78,12 +85,17 @@ class Years extends React.Component {
             title={'Number of Years Elite'}
             data={main.years.num_years_elite}
             xKey={'bucket'}
+            xLabel={'# Years'}
+            yLabel={'# Elite Users'}
             yTicks={_.range(0, 16000, 2000)}
             width={1000}
             showTooltip={true}
           />
         </div>
-        <div className={css(styles.yearCharts)}>{charts}</div>
+        <div className={css(styles.yearContainer)}>
+          <h2 className={css(styles.sectionHeader)}>Year by Year Breakdown</h2>
+          <div className={css(styles.yearCharts)}>{charts}</div>
+        </div>
       </div>
     );
   }
@@ -97,6 +109,22 @@ export default connect(mapStateToProps)(Years);
 
 const styles = StyleSheet.create({
   eliteYearsContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  sectionHeader: {
+    borderBottom: '3px solid #D32323',
+    color: '#333',
+    fontFamily: 'Montserrat, sans-serif',
+    fontSize: '1.375em',
+    padding: '5px 0',
+    textAlign: 'left'
+  },
+
+  yearContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
