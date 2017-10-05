@@ -20,9 +20,8 @@ import BarGraph from './charts/BarGraph.jsx';
 
 const YEARS = _.range(2005, 2018);
 
-class EliteYears extends React.Component {
+class Years extends React.Component {
   render() {
-
     let { main } = this.props;
 
     if (_.isEmpty(main.elite_years)) {
@@ -30,20 +29,19 @@ class EliteYears extends React.Component {
     }
 
     let yearCharts = [];
-    YEARS.forEach((year) => {
-      yearCharts.push(
-        {
-          title: year,
-          data: main.elite_years[year],
-          xKey: 'year',
-          bars: _.range(0, 14),
-          width: 400,
-          height: 400
-        }
-      )
-    })
+    YEARS.forEach(year => {
+      yearCharts.push({
+        title: year,
+        data: main.elite_years[year],
+        xKey: 'year',
+        bars: _.range(0, 14),
+        width: 400,
+        height: 400,
+        showTooltip: true
+      });
+    });
 
-    let charts = yearCharts.map((chart) => {
+    let charts = yearCharts.map(chart => {
       return (
         <BarGraph
           key={chart.title}
@@ -55,8 +53,9 @@ class EliteYears extends React.Component {
           bars={chart.bars}
           height={chart.height}
           width={chart.width}
+          showTooltip={chart.showTooltip}
         />
-      )
+      );
     });
 
     return (
@@ -70,7 +69,8 @@ class EliteYears extends React.Component {
             yTicks={_.range(0, 2200, 200)}
             bars={_.range(0, 14)}
             width={1000}
-          />        
+            showTooltip={true}
+          />
         </div>
         <div>
           <BarGraph
@@ -80,11 +80,10 @@ class EliteYears extends React.Component {
             xKey={'bucket'}
             yTicks={_.range(0, 16000, 2000)}
             width={1000}
+            showTooltip={true}
           />
         </div>
-        <div className={css(styles.yearCharts)}>
-          { charts }
-        </div>
+        <div className={css(styles.yearCharts)}>{charts}</div>
       </div>
     );
   }
@@ -94,25 +93,25 @@ const mapStateToProps = state => {
   return { main: state.main };
 };
 
-export default connect(mapStateToProps)(EliteYears);
+export default connect(mapStateToProps)(Years);
 
 const styles = StyleSheet.create({
   eliteYearsContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 
   yearCharts: {
     display: 'flex',
     flexFlow: 'row wrap',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 
   fadeIn: {
     animationName: fadeIn,
-    animationDuration: '1s',
+    animationDuration: '1s'
   }
-})
+});

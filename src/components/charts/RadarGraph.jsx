@@ -21,7 +21,7 @@ import {
 
 export default class RadarGraph extends React.Component {
   render() {
-    let { title, link, data, dataKey, width, height } = this.props;
+    let { title, link, data, dataKey, width, height, hideAxes } = this.props;
 
     if (_.isEmpty(data)) {
       return null;
@@ -31,14 +31,14 @@ export default class RadarGraph extends React.Component {
       <div className={css(styles.chartContainer)}>
         <h2 className={css(styles.header)}>{title}</h2>
         <RadarChart
-          outerRadius={'75%'}
+          outerRadius={'90%'}
           width={width ? width : 400}
           height={height ? height : 400}
           data={data}
         >
           <PolarGrid />
-          <PolarAngleAxis dataKey={'type'} tick={itemStyle} />
-          <PolarRadiusAxis tick={itemStyle} />
+          <PolarAngleAxis dataKey={'type'} tick={!hideAxes && itemStyle} />
+          <PolarRadiusAxis tick={!hideAxes && itemStyle} />
           <Radar
             dataKey={dataKey}
             stroke={'#D32323'}

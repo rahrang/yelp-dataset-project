@@ -29,50 +29,63 @@ class Home extends React.Component {
 
     const BAR_CHARTS = [
       {
-        title: 'Years to Elite',
+        title: 'Elite Reviews & Tips',
+        // link: '/yelp-dataset-project/compliments',
+        data: main.compliments.all_stats.average,
+        xKey: 'type',
+        yKey: 'value',
+        width: 300,
+        height: 300,
+        showTooltip: false,
+        hideAxes: true
+      },
+      {
+        title: 'Elite Years',
         link: '/yelp-dataset-project/elite_years',
         data: main.elite_years.yearly,
         xKey: 'year',
         yTicks: _.range(0, 2200, 200),
         bars: _.range(0, 14),
-        width: 1000
-      },
-      {
-        title: 'Average Review Compliments',
-        // link: '/yelp-dataset-project/compliments',
-        data: main.compliments.all_stats.average,
-        xKey: 'type',
-        yKey: 'value'
+        width: 300,
+        height: 300,
+        showTooltip: false,
+        hideAxes: true
       }
     ];
 
     let barCharts = BAR_CHARTS.map(chart => {
       return (
-        <BarGraph
-          key={chart.title}
-          title={chart.title}
-          link={chart.link}
-          data={chart.data}
-          xKey={chart.xKey}
-          yTicks={chart.yTicks}
-          bars={chart.bars}
-          height={chart.height}
-          width={chart.width}
-        />
+        <div className={css(styles.chartContainer)}>
+          <BarGraph
+            key={chart.title}
+            title={chart.title}
+            link={chart.link}
+            data={chart.data}
+            xKey={chart.xKey}
+            yTicks={chart.yTicks}
+            bars={chart.bars}
+            height={chart.height}
+            width={chart.width}
+            hideAxes={chart.hideAxes}
+          />
+        </div>
       );
     });
 
     return (
-      <div className={css(styles.homeContainer, styles.fadeIn)}>
-        <div className={css(styles.barChartContainer)}>{barCharts}</div>
-        <div className={css(styles.radarChartContainer)}>
+      <div className={css(styles.flexContainer, styles.fadeIn)}>
+        <div className={css(styles.chartContainer)}>
           <RadarGraph
-            title={'Average User Compliments'}
-            link={null}
+            title={'Elite Users'}
+            link={'/yelp-dataset-project/elite_users'}
             data={main.users.review_votes}
             dataKey={'average'}
+            width={300}
+            height={300}
+            hideAxes={true}
           />
         </div>
+        <div className={css(styles.flexContainer)}>{barCharts}</div>
       </div>
     );
   }
@@ -85,11 +98,15 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(Home);
 
 const styles = StyleSheet.create({
-  homeContainer: {
+  flexContainer: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+
+  chartContainer: {
+    padding: '20px'
   },
 
   fadeIn: {

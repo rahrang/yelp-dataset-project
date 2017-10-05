@@ -18,8 +18,8 @@ import { MainActions } from '../actions/main-actions';
 import Navbar from './Navbar.jsx';
 import Home from './Home.jsx';
 import About from './About.jsx';
-import Compliments from './Compliments.jsx';
-import EliteYears from './EliteYears.jsx';
+import Users from './Users.jsx';
+import Years from './Years.jsx';
 import Reviews from './Reviews.jsx';
 
 // Data Files
@@ -111,12 +111,12 @@ class Routes extends React.Component {
             <Route exact path={'/yelp-dataset-project'} component={Home} />
             <Route path={'/yelp-dataset-project/about'} component={About} />
             <Route
-              path={'/yelp-dataset-project/compliments'}
-              component={Compliments}
+              path={'/yelp-dataset-project/elite_users'}
+              component={Users}
             />
             <Route
               path={'/yelp-dataset-project/elite_years'}
-              component={EliteYears}
+              component={Years}
             />
             <Route path={'/yelp-dataset-project/reviews'} component={Reviews} />
           </Switch>

@@ -25,7 +25,9 @@ export default class BarGraph extends React.Component {
       yTicks,
       bars,
       width,
-      height
+      height,
+      showTooltip,
+      hideAxes
     } = this.props;
 
     if (_.isEmpty(data)) {
@@ -58,6 +60,7 @@ export default class BarGraph extends React.Component {
           barGap={0}
         >
           <XAxis
+            hide={hideAxes}
             dataKey={xKey}
             tick={itemStyle}
             ticks={xTicks && xTicks}
@@ -65,20 +68,23 @@ export default class BarGraph extends React.Component {
             padding={{ left: 20, right: 20 }}
           />
           <YAxis
+            hide={hideAxes}
             dataKey={yKey && yKey}
             tick={itemStyle}
             ticks={yTicks && yTicks}
             tickLine={false}
           />
           <CartesianGrid stroke="#999999" strokeDasharray="3 3" />
-          <Tooltip
-            separator={': '}
-            tick={itemStyle}
-            itemStyle={itemStyle}
-            labelStyle={labelStyle}
-            wrapperStyle={wrapperStyle}
-            animationDuration={1000}
-          />
+          {showTooltip && (
+            <Tooltip
+              separator={': '}
+              tick={itemStyle}
+              itemStyle={itemStyle}
+              labelStyle={labelStyle}
+              wrapperStyle={wrapperStyle}
+              animationDuration={1000}
+            />
+          )}
           {chartBars}
         </BarChart>
       </div>
