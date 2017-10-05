@@ -29,7 +29,7 @@ export default class RadarGraph extends React.Component {
 
     let toRender = (
       <div className={css(styles.chartContainer)}>
-        <h2 className={css(styles.header)}>{title}</h2>
+        <h2 className={css(styles.header, link && styles.hover)}>{title}</h2>
         <RadarChart
           outerRadius={'90%'}
           width={width ? width : 400}
@@ -82,6 +82,13 @@ const styles = StyleSheet.create({
     padding: '5px 20px',
     textAlign: 'center',
     textTransform: 'uppercase'
+  },
+
+  hover: {
+    ':hover': {
+      borderBottom: '3px solid #0073BB',
+      color: '#0073BB'
+    }
   }
 });
 

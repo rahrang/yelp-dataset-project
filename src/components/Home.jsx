@@ -23,14 +23,14 @@ class Home extends React.Component {
   render() {
     let { main } = this.props;
 
-    if (_.isEmpty(main.elite_years)) {
+    if (_.isEmpty(main.years)) {
       return null;
     }
 
     const BAR_CHARTS = [
       {
         title: 'Elite Reviews & Tips',
-        // link: '/yelp-dataset-project/compliments',
+        // link: '/yelp-dataset-project/reviews',
         data: main.compliments.all_stats.average,
         xKey: 'type',
         yKey: 'value',
@@ -41,8 +41,8 @@ class Home extends React.Component {
       },
       {
         title: 'Elite Years',
-        link: '/yelp-dataset-project/elite_years',
-        data: main.elite_years.yearly,
+        link: '/yelp-dataset-project/years',
+        data: main.years.yearly,
         xKey: 'year',
         yTicks: _.range(0, 2200, 200),
         bars: _.range(0, 14),

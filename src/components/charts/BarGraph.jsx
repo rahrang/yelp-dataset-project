@@ -34,7 +34,9 @@ export default class BarGraph extends React.Component {
       return null;
     }
 
-    let chartBars = <Bar dataKey={'value'} fill="#D32323" minPointSize={5} />;
+    let chartBars = (
+      <Bar dataKey={'value'} fill="#D32323" /*minPointSize={5}*/ />
+    );
 
     if (bars) {
       chartBars = bars.map(i => {
@@ -52,7 +54,7 @@ export default class BarGraph extends React.Component {
 
     let toRender = (
       <div className={css(styles.chartContainer)}>
-        <h2 className={css(styles.header)}>{title}</h2>
+        <h2 className={css(styles.header, link && styles.hover)}>{title}</h2>
         <BarChart
           width={width ? width : 800}
           height={height ? height : 500}
@@ -123,6 +125,13 @@ const styles = StyleSheet.create({
     padding: '5px 20px',
     textAlign: 'center',
     textTransform: 'uppercase'
+  },
+
+  hover: {
+    ':hover': {
+      borderBottom: '3px solid #0073BB',
+      color: '#0073BB'
+    }
   }
 });
 

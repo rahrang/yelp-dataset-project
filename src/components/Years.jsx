@@ -24,7 +24,7 @@ class Years extends React.Component {
   render() {
     let { main } = this.props;
 
-    if (_.isEmpty(main.elite_years)) {
+    if (_.isEmpty(main.years)) {
       return null;
     }
 
@@ -32,7 +32,7 @@ class Years extends React.Component {
     YEARS.forEach(year => {
       yearCharts.push({
         title: year,
-        data: main.elite_years[year],
+        data: main.years[year],
         xKey: 'year',
         bars: _.range(0, 14),
         width: 400,
@@ -64,7 +64,7 @@ class Years extends React.Component {
           <BarGraph
             key={'Years to Elite'}
             title={'Years to Elite'}
-            data={main.elite_years.yearly}
+            data={main.years.yearly}
             xKey={'year'}
             yTicks={_.range(0, 2200, 200)}
             bars={_.range(0, 14)}
@@ -76,7 +76,7 @@ class Years extends React.Component {
           <BarGraph
             key={'Number of Years Elite'}
             title={'Number of Years Elite'}
-            data={main.elite_years.num_years_elite}
+            data={main.years.num_years_elite}
             xKey={'bucket'}
             yTicks={_.range(0, 16000, 2000)}
             width={1000}

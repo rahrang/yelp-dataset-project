@@ -41,7 +41,7 @@ const DATA_FILES = {
   ],
 
   // 1
-  elite_years: _.range(2005, 2018).concat(['yearly', 'num_years_elite']),
+  years: _.range(2005, 2018).concat(['yearly', 'num_years_elite']),
 
   // 2
   reviews: ['average_stars', 'review_count'],
@@ -59,7 +59,7 @@ class Routes extends React.Component {
     let data = this.collectData();
     this.props.mainActions.storeData(
       data[0], // compliments
-      data[1], // elite_years
+      data[1], // years
       data[2], // reviews
       data[3] // users
     );
@@ -74,8 +74,8 @@ class Routes extends React.Component {
         case 'compliments':
           file = require(`../data/final/compliments/${f}.json`);
           break;
-        case 'elite_years':
-          file = require(`../data/final/elite_years/${f}.json`);
+        case 'years':
+          file = require(`../data/final/years/${f}.json`);
           break;
         case 'reviews':
           file = require(`../data/final/reviews/${f}.json`);
@@ -114,10 +114,7 @@ class Routes extends React.Component {
               path={'/yelp-dataset-project/elite_users'}
               component={Users}
             />
-            <Route
-              path={'/yelp-dataset-project/elite_years'}
-              component={Years}
-            />
+            <Route path={'/yelp-dataset-project/years'} component={Years} />
             <Route path={'/yelp-dataset-project/reviews'} component={Reviews} />
           </Switch>
         </div>

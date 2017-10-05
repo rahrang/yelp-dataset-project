@@ -18,52 +18,49 @@ import { fadeIn } from 'react-animations';
 // Local Components
 import BarGraph from './charts/BarGraph.jsx';
 
+const BAR_CHARTS = ['review_count', 'average_stars'];
+const TITLE_MAPPER = {
+  average_stars: 'Average Stars on Elite Reviews',
+  review_count: 'Number of Elite Reviews'
+};
+
 class Reviews extends React.Component {
   render() {
-
     let { main } = this.props;
 
-    if (_.isEmpty(main.elite_years)) {
+    if (_.isEmpty(main.years)) {
       return null;
     }
 
-    const BAR_CHARTS = [
-      {
-        title: 'Years to Elite',
-        link: '/',
-        data: main.elite_years.yearly,
-        xKey: 'year',
-        yTicks: _.range(0, 2200, 200),
-        bars: _.range(0, 14),
-        width: 1000
-      },
-      {
-        title: 'Average Compliments',
-        link: '/',
-        data: main.compliments.all_stats.average,
-        xKey: 'type',
-        yKey: 'value',
-      }
-    ]
+    let charts = [];
+    BAR_CHARTS.forEach(type => {
+      charts.push({
+        title: TITLE_MAPPER[type],
+        data: main.reviews[type],
+        xKey: 'bucket',
+        width: 500,
+        height: 400,
+        showTooltip: true
+      });
+    });
 
-    let barCharts = BAR_CHARTS.map((chart) => {
+    let barCharts = charts.map(chart => {
       return (
         <BarGraph
           key={chart.title}
           title={chart.title}
-          link={chart.link}
+          link={null}
           data={chart.data}
           xKey={chart.xKey}
-          yTicks={chart.yTicks}
-          bars={chart.bars}
           height={chart.height}
           width={chart.width}
+          showTooltip={chart.showTooltip}
         />
-      )
+      );
     });
 
     return (
-      <div className={css(styles.homeContainer, styles.fadeIn)}>
+      <div className={css(styles.reviewContainer, styles.fadeIn)}>
         {barCharts}
       </div>
     );
@@ -77,15 +74,15 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(Reviews);
 
 const styles = StyleSheet.create({
-  homeContainer: {
+  reviewContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 
   fadeIn: {
     animationName: fadeIn,
-    animationDuration: '1s',
+    animationDuration: '1s'
   }
-})
+});
