@@ -16,15 +16,49 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis
+  PolarRadiusAxis,
+  Legend
 } from 'recharts';
+
+const COLOR_MAP = ['#E6E6E6', '#41A700', '#333333', '#0073BB', '#D32323'];
 
 export default class RadarGraph extends React.Component {
   render() {
-    let { title, link, data, dataKey, width, height, hideAxes } = this.props;
+    let {
+      title,
+      link,
+      data,
+      dataKey,
+      width,
+      height,
+      hideAxes,
+      radars
+    } = this.props;
 
     if (_.isEmpty(data)) {
       return null;
+    }
+
+    let chartRadars = (
+      <Radar
+        dataKey={dataKey}
+        stroke={'#D32323'}
+        fill={'#D32323'}
+        fillOpacity={0.5}
+      />
+    );
+
+    if (radars) {
+      chartRadars = radars.map((radar, index) => {
+        return (
+          <Radar
+            dataKey={radar}
+            stroke={COLOR_MAP[index]}
+            fill={COLOR_MAP[index]}
+            fillOpacity={0.5}
+          />
+        );
+      });
     }
 
     let toRender = (
@@ -37,14 +71,16 @@ export default class RadarGraph extends React.Component {
           data={data}
         >
           <PolarGrid />
+          {radars && (
+            <Legend
+              iconSize={12}
+              iconType={'triangle'}
+              wrapperStyle={itemStyle}
+            />
+          )}
           <PolarAngleAxis dataKey={'type'} tick={!hideAxes && itemStyle} />
           <PolarRadiusAxis tick={!hideAxes && itemStyle} />
-          <Radar
-            dataKey={dataKey}
-            stroke={'#D32323'}
-            fill={'#D32323'}
-            fillOpacity={0.5}
-          />
+          {chartRadars}
         </RadarChart>
       </div>
     );

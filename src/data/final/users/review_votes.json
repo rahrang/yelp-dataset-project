@@ -3,18 +3,36 @@
     "type": "cool",
     "average": 373.15,
     "median": 11.1,
-    "maximum": 201062
+    "maximum": 201062,
+    "minimum": 0,
+    "mode": 0,
+    "10": 0.0,
+    "25": 2.0,
+    "75": 67.0,
+    "90": 364.0
   },
   {
     "type": "funny",
     "average": 263.19,
     "median": 14.36,
-    "maximum": 192663
+    "maximum": 192663,
+    "minimum": 0,
+    "mode": 0,
+    "10": 0.0,
+    "25": 3.0,
+    "75": 66.0,
+    "90": 282.0
   },
   {
     "type": "useful",
     "average": 479.92,
     "median": 44.98,
-    "maximum": 202867
+    "maximum": 202867,
+    "minimum": 0,
+    "mode": 0,
+    "10": 3.0,
+    "25": 12.0,
+    "75": 168.0,
+    "90": 607.0
   }
 ]

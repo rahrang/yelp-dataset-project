@@ -20,7 +20,7 @@ import RadarGraph from './charts/RadarGraph.jsx';
 import BarGraph from './charts/BarGraph.jsx';
 
 // Constants
-const RADAR_CHARTS = ['average', 'median', 'maximum'];
+const RADAR_CHARTS = ['average', 'median', 'maximum', 'mode', 'minimum'];
 const BAR_CHARTS = ['review_count', 'average_stars'];
 
 const MAPPER = {
@@ -49,23 +49,28 @@ class Users extends React.Component {
       return null;
     }
 
-    let rCharts = [];
-    RADAR_CHARTS.forEach(type => {
-      rCharts.push({
-        title: `${type} User Compliments`,
-        data: main.users.review_votes,
-        dataKey: type
-      });
-    });
+    let statsRadar = (
+      <RadarGraph
+        key={'Percentiles User Compliments'}
+        title={'Percentiles'}
+        link={null}
+        data={main.users.review_votes}
+        dataKey={'10'}
+        radars={['10', '25', 'median', '75', '90']}
+        width={400}
+        height={300}
+        hideAxes={false}
+      />
+    );
 
-    let radarCharts = rCharts.map(chart => {
+    let radarCharts = RADAR_CHARTS.map(chart => {
       return (
         <RadarGraph
-          key={chart.title}
-          title={chart.title}
+          key={`${chart} User Compliments`}
+          title={chart}
           link={null}
-          data={chart.data}
-          dataKey={chart.dataKey}
+          data={main.users.review_votes}
+          dataKey={chart}
           width={400}
           height={300}
           hideAxes={false}
@@ -73,37 +78,23 @@ class Users extends React.Component {
       );
     });
 
-    let bCharts = [];
-    BAR_CHARTS.forEach(type => {
-      bCharts.push({
-        title: MAPPER[type].title,
-        data: main.users[type],
-        xKey: 'bucket',
-        xLabel: MAPPER[type].xLabel,
-        yLabel: MAPPER[type].yLabel,
-        yTicks: MAPPER[type].yTicks,
-        width: 800,
-        height: 500,
-        minPointSize: MAPPER[type].minPointSize,
-        showTooltip: true
-      });
-    });
+    radarCharts.unshift(statsRadar);
 
-    let barCharts = bCharts.map(chart => {
+    let barCharts = BAR_CHARTS.map(chart => {
       return (
         <BarGraph
-          key={chart.title}
-          title={chart.title}
+          key={MAPPER[chart].title}
+          title={MAPPER[chart].title}
           link={null}
-          data={chart.data}
-          xKey={chart.xKey}
-          xLabel={chart.xLabel}
-          yLabel={chart.yLabel}
-          yTicks={chart.yTicks}
-          height={chart.height}
-          width={chart.width}
-          minPointSize={chart.minPointSize}
-          showTooltip={chart.showTooltip}
+          data={main.users[chart]}
+          xKey={'bucket'}
+          xLabel={MAPPER[chart].xLabel}
+          yLabel={MAPPER[chart].yLabel}
+          yTicks={MAPPER[chart].yTicks}
+          height={500}
+          width={800}
+          minPointSize={MAPPER[chart].minPointSize}
+          showTooltip={true}
         />
       );
     });

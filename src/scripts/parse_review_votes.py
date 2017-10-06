@@ -6,7 +6,7 @@ file_prefix = '../data/clean/'
 file_suffix = '.json'
 
 files = ['cool', 'funny', 'useful']
-traits = ['average', 'median', 'max']
+traits = ['average', 'median', 'max', 'min', 'mode', '10', '25', '75', '90']
 
 data = []
 
