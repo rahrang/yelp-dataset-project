@@ -7,3 +7,5 @@ node_modules
 src/dataset
 
 src/data/raw
+
+src/data/clean
