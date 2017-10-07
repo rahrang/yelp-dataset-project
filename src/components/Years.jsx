@@ -34,7 +34,7 @@ class Years extends React.Component {
         title: year,
         data: main.years[year],
         xKey: 'year',
-        xLabel: null,
+        xLabel: '# Years Yelping before Elite Induction',
         yLabel: '# Users inducted into Elite',
         bars: _.range(0, 14),
         width: 400,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+    width: '100%'
   },
 
   sectionHeader: {
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     fontSize: '1.375em',
     padding: '5px 0 5px 50px',
     textAlign: 'left',
-    width: '100%',
+    width: '100%'
   },
 
   container: {
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+    width: '100%'
   },
 
   yearCharts: {
