@@ -30,7 +30,7 @@ class Home extends React.Component {
     const BAR_CHARTS = [
       {
         title: 'Elite Reviews', // TODO: Tips
-        // link: '/yelp-dataset-project/reviews', // TODO: THIS COMPONENT
+        link: '/yelp-dataset-project/reviews',
         data: main.compliments.all_stats.average,
         xKey: 'type',
         yKey: 'value',

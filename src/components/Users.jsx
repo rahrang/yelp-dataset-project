@@ -101,11 +101,11 @@ class Users extends React.Component {
 
     return (
       <div className={css(styles.userContainer, styles.fadeIn)}>
-        <div className={css(styles.barContainer)}>
-          <h2 className={css(styles.sectionHeader)}>Elite Reviews</h2>
+        <div className={css(styles.container)}>
+          <h2 className={css(styles.sectionHeader)}>Elite Users</h2>
           <div className={css(styles.bars)}>{barCharts}</div>
         </div>
-        <div className={css(styles.radarContainer)}>
+        <div className={css(styles.container)}>
           <h2 className={css(styles.sectionHeader)}>User Compliments</h2>
           <div className={css(styles.radars)}>{radarCharts}</div>
         </div>
@@ -125,7 +125,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '100%',
   },
 
   sectionHeader: {
@@ -133,8 +134,18 @@ const styles = StyleSheet.create({
     color: '#333',
     fontFamily: 'Montserrat, sans-serif',
     fontSize: '1.375em',
-    padding: '5px 0',
-    textAlign: 'left'
+    textAlign: 'left',
+    padding: '5px 0 5px 50px',
+    width: '100%',
+  },
+
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '5px 20px',
+    width: '100%',
   },
 
   radars: {

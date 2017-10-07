@@ -3,9 +3,9 @@
 import json
 
 file_prefix = '../../data/'
-data_folder = 'raw/'
+data_folder = 'final/reviews/'
 file_suffix = '.json'
-filename = 'elite_users_info'
+filename = 'review_votes'
 
 file = file_prefix + data_folder + filename + file_suffix
 

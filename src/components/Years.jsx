@@ -64,7 +64,7 @@ class Years extends React.Component {
 
     return (
       <div className={css(styles.eliteYearsContainer, styles.fadeIn)}>
-        <div className={css(styles.yearlyChart)}>
+        <div className={css(styles.container)}>
           <h2 className={css(styles.sectionHeader)}>Elite Years</h2>
           <BarGraph
             key={'Years to Elite'}
@@ -92,7 +92,7 @@ class Years extends React.Component {
             showTooltip={true}
           />
         </div>
-        <div className={css(styles.yearContainer)}>
+        <div className={css(styles.container)}>
           <h2 className={css(styles.sectionHeader)}>Year by Year Breakdown</h2>
           <div className={css(styles.yearCharts)}>{charts}</div>
         </div>
@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '100%',
   },
 
   sectionHeader: {
@@ -120,15 +121,17 @@ const styles = StyleSheet.create({
     color: '#333',
     fontFamily: 'Montserrat, sans-serif',
     fontSize: '1.375em',
-    padding: '5px 0',
-    textAlign: 'left'
+    padding: '5px 0 5px 50px',
+    textAlign: 'left',
+    width: '100%',
   },
 
-  yearContainer: {
+  container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '100%',
   },
 
   yearCharts: {
